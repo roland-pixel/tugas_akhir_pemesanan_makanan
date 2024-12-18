@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,6 +17,8 @@ class MyApp extends StatelessWidget {
 }
 
 class DaftarMenuPage extends StatelessWidget {
+  const DaftarMenuPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +27,12 @@ class DaftarMenuPage extends StatelessWidget {
         title: Row(
           children: [
             Image.asset(
-              'assets/logo_mcd.png',
+              'assets/images/logo_mcd.png',
               width: 40,
               height: 40,
             ),
-            SizedBox(width: 10),
-            Text(
+            const SizedBox(width: 10),
+            const Text(
               'MyM',
               style: TextStyle(
                 fontSize: 20,
@@ -36,15 +40,15 @@ class DaftarMenuPage extends StatelessWidget {
                 color: Colors.yellow,
               ),
             ),
-            Spacer(),
-            Text(
+            const Spacer(),
+            const Text(
               '0 poin',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
               ),
             ),
-            Icon(Icons.arrow_forward_ios),
+            const Icon(Icons.arrow_forward_ios),
           ],
         ),
       ), // Panggil fungsi AppBar
