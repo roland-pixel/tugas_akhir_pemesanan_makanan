@@ -66,6 +66,7 @@ class DaftarMenuPage extends StatelessWidget {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 10),
           Center(
@@ -113,7 +114,6 @@ class DaftarMenuPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Reward',
@@ -122,6 +122,7 @@ class DaftarMenuPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                Spacer(),
                 Row(
                   children: [
                     InkWell(
@@ -146,7 +147,239 @@ class DaftarMenuPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 10,
+                ),
               ],
+            ),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                containerreward(),
+                containerreward(),
+                containerreward(),
+                containerreward(),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Promo',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Promowidget(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            promocardmenu(
+                                expirytext: 'segera Habis masa berlaku nya',
+                                imgurl: 'assets/images/sushi1.png',
+                                promoname: 'Promo Menu 1',
+                                validitydate: 'Berlaku hingga 31 desember'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// class widget anak
+class containerreward extends StatelessWidget {
+  const containerreward({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      padding: EdgeInsets.all(8),
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey),
+      ),
+      child: Column(
+        children: [
+          Image.asset(
+            'assets/images/drink14.jpg',
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(8)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.lock,
+                      size: 16,
+                    ),
+                    Text(
+                      '10 poin',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 13,
+          ),
+          Text(
+            'Coco Top',
+            style: TextStyle(fontSize: 18),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Promowidget extends StatelessWidget {
+  const Promowidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          promocategory(title: 'tukar sekarang', isSelected: true),
+          promocategory(title: 'ayam'),
+          promocategory(title: 'daging'),
+          promocategory(title: 'sarapan'),
+          promocategory(title: 'desert'),
+          promocategory(title: 'maincourse'),
+        ],
+      ),
+    );
+  }
+}
+
+class promocategory extends StatelessWidget {
+  final String title;
+  final bool isSelected;
+
+  const promocategory({
+    required this.title,
+    this.isSelected = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.yellow : Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: isSelected ? Colors.yellow : Colors.grey,
+          width: 2,
+        ),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: isSelected ? Colors.black : Colors.grey,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class promocardmenu extends StatelessWidget {
+  final String expirytext;
+  final String imgurl;
+  final String promoname;
+  final String validitydate;
+
+  const promocardmenu({
+    required this.expirytext,
+    required this.imgurl,
+    required this.promoname,
+    required this.validitydate,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 200,
+      margin: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            expirytext,
+            style: TextStyle(
+              color: Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 8),
+          Image.asset(
+            imgurl,
+            fit: BoxFit.cover,
+            width: double.infinity,
+          ),
+          SizedBox(height: 8),
+          Text(
+            promoname,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 4),
+          Text(
+            validitydate,
+            style: TextStyle(
+              color: Colors.grey,
             ),
           )
         ],

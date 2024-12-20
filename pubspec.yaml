@@ -61,6 +61,7 @@ flutter:
     - assets/images/logo_mcd.png
     - assets/images/qrcode.png
     - assets/images/drink14.jpg
+    - assets/images/sushi1.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
