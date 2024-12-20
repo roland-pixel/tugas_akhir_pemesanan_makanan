@@ -64,147 +64,186 @@ class DaftarMenuPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 10),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(16),
-              color: Colors.yellow,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(16),
+                color: Colors.yellow,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/qrcode.png',
+                            width: 300,
+                            height: 150,
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            'M 189 016',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      'Pindai kode untuk mendapatkan Poin.',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
                 children: [
-                  Container(
-                    color: Colors.white,
-                    padding: EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/qrcode.png',
-                          width: 300,
-                          height: 150,
+                  Text(
+                    'Reward',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: Row(
+                          children: [
+                            Text(
+                              'Lihat Semua',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.blue[900],
+                              ),
+                            ),
+                            SizedBox(width: 5),
+                            Icon(
+                              Icons.arrow_forward_outlined,
+                              color: Colors.blue[900],
+                              size: 16,
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          'M 189 016',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  containerreward(),
+                  containerreward(),
+                  containerreward(),
+                  containerreward(),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Promo',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
                     height: 16,
                   ),
-                  Text(
-                    'Pindai kode untuk mendapatkan Poin.',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  Promowidget(),
+                  SizedBox(height: 30),
+                  Column(
+                    children: [
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                      promocardmenu(
+                          expirytext: 'segera Habis masa berlaku nya',
+                          imgurl: 'assets/images/sushi1.png',
+                          promoname: 'Promo Menu 1',
+                          validitydate: 'Berlaku hingga 31 desember'),
+                    ],
+                  )
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                Text(
-                  'Reward',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Spacer(),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Text(
-                            'Lihat Semua',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.blue[900],
-                            ),
-                          ),
-                          SizedBox(width: 5),
-                          Icon(
-                            Icons.arrow_forward_outlined,
-                            color: Colors.blue[900],
-                            size: 16,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                containerreward(),
-                containerreward(),
-                containerreward(),
-                containerreward(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Promo',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                Promowidget(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            promocardmenu(
-                                expirytext: 'segera Habis masa berlaku nya',
-                                imgurl: 'assets/images/sushi1.png',
-                                promoname: 'Promo Menu 1',
-                                validitydate: 'Berlaku hingga 31 desember'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -344,8 +383,8 @@ class promocardmenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      margin: EdgeInsets.all(8),
+      width: 400,
+      margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
