@@ -71,89 +71,12 @@ class DaftarMenuPage extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             Center(
-              child: Container(
-                padding: EdgeInsets.all(16),
-                color: Colors.yellow,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/qrcode.png',
-                            width: 300,
-                            height: 150,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            'M 189 016',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      'Pindai kode untuk mendapatkan Poin.',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
+              child: poin(),
             ),
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Text(
-                    'Reward',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Row(
-                          children: [
-                            Text(
-                              'Lihat Semua',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.blue[900],
-                              ),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(
-                              Icons.arrow_forward_outlined,
-                              color: Colors.blue[900],
-                              size: 16,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
-            ),
+            reward(),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -238,12 +161,114 @@ class DaftarMenuPage extends StatelessWidget {
                           promoname: 'Promo Menu 1',
                           validitydate: 'Berlaku hingga 31 desember'),
                     ],
-                  )
+                  ),
+                  SizedBox(height: 50),
+                  mymcdrewardscard(),
+                  SizedBox(height: 20),
+                  CouponCard(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class poin extends StatelessWidget {
+  const poin({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      color: Colors.yellow,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            // color: Colors.white,
+            padding: EdgeInsets.all(8),
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/images/qrcode.png',
+                  width: 300,
+                  height: 150,
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  'M 189 016',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          Text(
+            'Pindai kode untuk mendapatkan Poin.',
+            style: TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class reward extends StatelessWidget {
+  const reward({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Text(
+            'Reward',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Spacer(),
+          Row(
+            children: [
+              InkWell(
+                onTap: () {},
+                child: Row(
+                  children: [
+                    Text(
+                      'Lihat Semua',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blue[900],
+                      ),
+                    ),
+                    SizedBox(width: 5),
+                    Icon(
+                      Icons.arrow_forward_outlined,
+                      color: Colors.blue[900],
+                      size: 16,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+        ],
       ),
     );
   }
@@ -420,6 +445,92 @@ class promocardmenu extends StatelessWidget {
             style: TextStyle(
               color: Colors.grey,
             ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class mymcdrewardscard extends StatelessWidget {
+  const mymcdrewardscard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/images/logo_mcd.png',
+            width: 50,
+            height: 50,
+          ),
+          SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'MyMcd Rewards',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Bagaimana Cara kerjanya?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class CouponCard extends StatelessWidget {
+  const CouponCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(16),
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/kupon.png',
+            width: 200,
+            height: 200,
+          ),
+          SizedBox(height: 16),
+          Text(
+            'Itu Saja untuk saat ini.',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 4),
+          Text(
+            'Segera Periksa lagi untuk Kelezatan tiada henti!',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
           )
         ],
       ),
