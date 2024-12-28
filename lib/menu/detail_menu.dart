@@ -24,7 +24,7 @@ class DetailMenuPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBarKustom(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -40,6 +40,7 @@ class DetailMenuPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: customnavigationbar(),
     );
   }
 }
@@ -69,7 +70,12 @@ class _AppBarKustomState extends State<AppBarKustom> {
       actions: [
         IconButton(
           icon: Icon(Icons.share, color: Colors.orange),
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => ShareWidget(),
+            );
+          },
         ),
         Stack(
           children: [
@@ -109,25 +115,29 @@ class _AppBarKustomState extends State<AppBarKustom> {
 class MenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin:
-          EdgeInsets.all(16), // Padding untuk menambahkan ruang di sekitar card
-      child: Column(
-        children: [
-          Image.asset('assets/images/sushi1.png'),
-          SizedBox(height: 10),
-          Text(
-            'Nikmati PaNas 1 hanya Dengan 25 Ribu',
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        child: Card(
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/sushi1.png',
+                height: 250,
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Nikmati PaNas 1 hanya Dengan 25 Ribu',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 10), // Menambahkan jarak setelah teks
+            ],
           ),
-          SizedBox(height: 10), // Menambahkan jarak setelah teks
-        ],
-      ),
-    );
+        ));
   }
 }
 
@@ -159,11 +169,6 @@ class _DeskripsiWidgetState extends State<DeskripsiWidget> {
             Text(
               'Deskripsi',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Spesifikasi Dasar',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
@@ -270,44 +275,227 @@ class RatingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    double cardWidth = MediaQuery.of(context).size.width * 0.8;
+
+    return Center(
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        child: Container(
+          width: cardWidth,
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                nama,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 4),
+              Text(
+                'Pengguna MCD App sejak $penggunaSejak',
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+              SizedBox(height: 6),
+              Text(
+                'Rating: $rating',
+                style: TextStyle(fontSize: 14),
+              ),
+              SizedBox(height: 4),
+              Text(komentar, style: TextStyle(fontSize: 14)),
+              SizedBox(height: 6),
+              Text(
+                menu,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 4),
+              Text(
+                tanggal,
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class customnavigationbar extends StatelessWidget {
+  const customnavigationbar({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      color: Colors.white,
+      padding: EdgeInsets.zero,
+      child: Container(
+        height: 40,
+        color: Colors.tealAccent,
+        child: Row(
           children: [
-            Text(
-              nama,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Container(
+              width: 120,
+              child: IconButton(
+                icon: Icon(Icons.chat),
+                onPressed: () {},
+              ),
             ),
-            SizedBox(height: 4),
-            Text(
-              'Pengguna MCD App sejak $penggunaSejak',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+            Container(
+              width: 1,
+              height: 40,
+              color: Colors.grey,
             ),
-            SizedBox(height: 8),
-            Text(
-              'Rating: $rating',
-              style: TextStyle(fontSize: 16),
+            Container(
+              width: 120,
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {},
+              ),
             ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(komentar),
-            SizedBox(height: 8),
-            Text(
-              menu,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 4),
-            Text(
-              tanggal,
-              style: TextStyle(color: Colors.grey),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  color: Colors.orange,
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Beli Dengan',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Voucher Rp5.524.053',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ShareWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.5,
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Center(
+                  child: Text(
+                    'Share ke teman dan keluargamu!',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 24),
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Colors.yellow,
+                child: Icon(Icons.perm_contact_cal, color: Colors.white),
+              ),
+              SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Lontak Saya',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'Bagikan ke Teman Shopee dan kontak lainnya',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ],
+              )
+            ],
+          ),
+          SizedBox(height: 24),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Wrap(
+              spacing: 16,
+              children: [
+                ShareButton(icon: Icons.wechat_sharp, label: 'WhatsApp'),
+                ShareButton(icon: Icons.camera_alt, label: 'Story'),
+                ShareButton(icon: Icons.photo, label: 'Feed Instagram'),
+                ShareButton(icon: Icons.send, label: 'Telegram'),
+                ShareButton(icon: Icons.facebook, label: 'Facebook'),
+                ShareButton(icon: Icons.wechat_sharp, label: 'WhatsApp'),
+                ShareButton(icon: Icons.camera_alt, label: 'Story'),
+                ShareButton(icon: Icons.photo, label: 'Feed Instagram'),
+                ShareButton(icon: Icons.send, label: 'Telegram'),
+                ShareButton(icon: Icons.facebook, label: 'Facebook'),
+              ],
+            ),
+          ),
+          SizedBox(height: 24),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Wrap(
+              spacing: 16,
+              children: [
+                ShareButton(icon: Icons.link, label: 'Salin Tautan'),
+                ShareButton(icon: Icons.save_alt, label: 'simpan Foto'),
+                ShareButton(icon: Icons.more_horiz, label: 'Lainnya'),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ShareButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  ShareButton({required this.icon, required this.label});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 25,
+          child: IconButton(
+            icon: Icon(
+              icon,
+              size: 25,
+              color: Colors.black,
+            ),
+            onPressed: () {},
+          ),
+        ),
+        Text(label),
+      ],
     );
   }
 }
