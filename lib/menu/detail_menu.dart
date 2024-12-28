@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'chat.dart';
+import 'daftar_menu.dart';
 
 void main() {
   runApp(DetailMenu());
@@ -59,7 +61,12 @@ class _AppBarKustomState extends State<AppBarKustom> {
     return AppBar(
       leading: IconButton(
         icon: Icon(Icons.arrow_back, color: Colors.orange),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DaftarMenuPage()),
+          );
+        },
       ),
       title: TextField(
         decoration: InputDecoration(
@@ -336,7 +343,12 @@ class customnavigationbar extends StatelessWidget {
               width: 120,
               child: IconButton(
                 icon: Icon(Icons.chat),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => chatwidget()),
+                  );
+                },
               ),
             ),
             Container(
@@ -353,7 +365,12 @@ class customnavigationbar extends StatelessWidget {
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => ProductWidget(),
+                  );
+                },
                 child: Container(
                   color: Colors.orange,
                   alignment: Alignment.center,
@@ -496,6 +513,156 @@ class ShareButton extends StatelessWidget {
         ),
         Text(label),
       ],
+    );
+  }
+}
+
+class ProductWidget extends StatefulWidget {
+  @override
+  _ProductWidgetState createState() => _ProductWidgetState();
+}
+
+class _ProductWidgetState extends State<ProductWidget> {
+  int quantity = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.45,
+      padding: EdgeInsets.all(16),
+      child: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Container(
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 100,
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/images/sushi1.png',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: Icon(
+                            Icons.zoom_out_map,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Harga: Rp5.524.053',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Stok: 1080',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Jumlah:',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              if (quantity > 1) quantity--;
+                            });
+                          },
+                        ),
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: Text(
+                          quantity.toString(),
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              quantity++;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Divider(),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Beli Sekarang'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(MediaQuery.of(context).size.width - 32, 50),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

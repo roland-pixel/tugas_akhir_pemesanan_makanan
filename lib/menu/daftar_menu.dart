@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir_pemesanan_makanan/menu/detail_menu.dart';
 
 void main() {
   runApp(MyApp());
@@ -407,46 +408,57 @@ class promocardmenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            expirytext,
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-            ),
+    return GestureDetector(
+      onTap: () {
+        // Navigasi ke halaman detail
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailMenuPage(),
           ),
-          SizedBox(height: 8),
-          Image.asset(
-            imgurl,
-            fit: BoxFit.cover,
-            width: double.infinity,
-          ),
-          SizedBox(height: 8),
-          Text(
-            promoname,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+        );
+      },
+      child: Container(
+        width: 400,
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              expirytext,
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: 4),
-          Text(
-            validitydate,
-            style: TextStyle(
-              color: Colors.grey,
+            SizedBox(height: 8),
+            Image.asset(
+              imgurl,
+              fit: BoxFit.cover,
+              width: double.infinity,
             ),
-          )
-        ],
+            SizedBox(height: 8),
+            Text(
+              promoname,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              validitydate,
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
