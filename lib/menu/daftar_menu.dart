@@ -72,7 +72,7 @@ class DaftarMenuPage extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             Center(
-              child: poin(),
+              child: Poin(),
             ),
             SizedBox(
               height: 20,
@@ -107,7 +107,7 @@ class DaftarMenuPage extends StatelessWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  Promowidget(),
+                  PromoWidget(),
                   SizedBox(height: 30),
                   Column(
                     children: [
@@ -177,47 +177,55 @@ class DaftarMenuPage extends StatelessWidget {
   }
 }
 
-class poin extends StatelessWidget {
-  const poin({
+class Poin extends StatelessWidget {
+  const Poin({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      color: Colors.yellow,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            // color: Colors.white,
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: [
-                Image.asset(
-                  'assets/images/qrcode.png',
-                  width: 300,
-                  height: 150,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'M 189 016',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-              ],
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double mainContainerWidth = screenWidth * 0.7;
+    final double innerContainerWidth = mainContainerWidth * 0.5;
+
+    return Center(
+      child: Container(
+        width: mainContainerWidth,
+        padding: EdgeInsets.all(16),
+        color: Colors.yellow,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: innerContainerWidth,
+              padding: EdgeInsets.all(8),
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/poin.png',
+                    width: 300,
+                    height: 150,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    'M 189 016',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Text(
-            'Pindai kode untuk mendapatkan Poin.',
-            style: TextStyle(fontSize: 16),
-          ),
-        ],
+            SizedBox(
+              height: 16,
+            ),
+            Text(
+              'Pindai kode untuk mendapatkan Poin.',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -335,8 +343,21 @@ class containerreward extends StatelessWidget {
   }
 }
 
-class Promowidget extends StatelessWidget {
-  const Promowidget({super.key});
+class PromoWidget extends StatefulWidget {
+  const PromoWidget({super.key});
+
+  @override
+  _PromoWidgetState createState() => _PromoWidgetState();
+}
+
+class _PromoWidgetState extends State<PromoWidget> {
+  String selectedCategory = 'tukar sekarang';
+
+  void _onCategorySelected(String category) {
+    setState(() {
+      selectedCategory = category;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -344,47 +365,76 @@ class Promowidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          promocategory(title: 'tukar sekarang', isSelected: true),
-          promocategory(title: 'ayam'),
-          promocategory(title: 'daging'),
-          promocategory(title: 'sarapan'),
-          promocategory(title: 'desert'),
-          promocategory(title: 'maincourse'),
+          PromoCategory(
+            title: 'tukar sekarang',
+            isSelected: selectedCategory == 'tukar sekarang',
+            onTap: () => _onCategorySelected('tukar sekarang'),
+          ),
+          PromoCategory(
+            title: 'ayam',
+            isSelected: selectedCategory == 'ayam',
+            onTap: () => _onCategorySelected('ayam'),
+          ),
+          PromoCategory(
+            title: 'daging',
+            isSelected: selectedCategory == 'daging',
+            onTap: () => _onCategorySelected('daging'),
+          ),
+          PromoCategory(
+            title: 'sarapan',
+            isSelected: selectedCategory == 'sarapan',
+            onTap: () => _onCategorySelected('sarapan'),
+          ),
+          PromoCategory(
+            title: 'desert',
+            isSelected: selectedCategory == 'desert',
+            onTap: () => _onCategorySelected('desert'),
+          ),
+          PromoCategory(
+            title: 'maincourse',
+            isSelected: selectedCategory == 'maincourse',
+            onTap: () => _onCategorySelected('maincourse'),
+          ),
         ],
       ),
     );
   }
 }
 
-class promocategory extends StatelessWidget {
+class PromoCategory extends StatelessWidget {
   final String title;
   final bool isSelected;
+  final VoidCallback onTap;
 
-  const promocategory({
+  const PromoCategory({
     required this.title,
-    this.isSelected = false,
+    required this.isSelected,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 8),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: isSelected ? Colors.yellow : Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: isSelected ? Colors.yellow : Colors.grey,
-          width: 2,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8),
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.yellow : Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: isSelected ? Colors.yellow : Colors.grey,
+            width: 2,
+          ),
         ),
-      ),
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: isSelected ? Colors.black : Colors.grey,
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: isSelected ? Colors.black : Colors.grey,
+            ),
           ),
         ),
       ),
@@ -397,7 +447,6 @@ class promocardmenu extends StatelessWidget {
   final String imgurl;
   final String promoname;
   final String validitydate;
-
   const promocardmenu({
     required this.expirytext,
     required this.imgurl,
@@ -405,12 +454,11 @@ class promocardmenu extends StatelessWidget {
     required this.validitydate,
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width * 0.9;
     return GestureDetector(
       onTap: () {
-        // Navigasi ke halaman detail
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -418,46 +466,48 @@ class promocardmenu extends StatelessWidget {
           ),
         );
       },
-      child: Container(
-        width: 400,
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              expirytext,
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
+      child: Center(
+        child: Container(
+          width: screenWidth,
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                expirytext,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 8),
-            Image.asset(
-              imgurl,
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-            SizedBox(height: 8),
-            Text(
-              promoname,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+              SizedBox(height: 8),
+              Image.asset(
+                imgurl,
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
-            ),
-            SizedBox(height: 4),
-            Text(
-              validitydate,
-              style: TextStyle(
-                color: Colors.grey,
+              SizedBox(height: 8),
+              Text(
+                promoname,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            )
-          ],
+              SizedBox(height: 4),
+              Text(
+                validitydate,
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
