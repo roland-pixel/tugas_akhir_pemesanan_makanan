@@ -24,22 +24,31 @@ class DaftarMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: Color(0xFFD32F2F),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarMenuPage()),
+            );
+          },
+        ),
         title: Row(
           children: [
             const Text(
-              'My',
+              'Kuliner',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.yellow,
+                color: Colors.black,
               ),
             ),
             const SizedBox(width: 5),
             Image.asset(
-              'assets/images/logo_mcd.png',
-              width: 40,
-              height: 40,
+              'assets/images/soup.png',
+              width: 30,
+              height: 30,
             ),
             const Spacer(),
             InkWell(
@@ -50,13 +59,13 @@ class DaftarMenuPage extends StatelessWidget {
                     '0 poin',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(width: 5),
                   const Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.white,
+                    color: Colors.black,
                     size: 15,
                   ),
                 ],
@@ -82,10 +91,26 @@ class DaftarMenuPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  containerreward(),
-                  containerreward(),
-                  containerreward(),
-                  containerreward(),
+                  ContainerReward(
+                    imageUrl: 'assets/images/esteh.jpeg',
+                    points: '10 poin',
+                    name: 'Es Teh',
+                  ),
+                  ContainerReward(
+                    imageUrl: 'assets/images/esteler.jpeg',
+                    points: '25 poin',
+                    name: 'Es Teler',
+                  ),
+                  ContainerReward(
+                    imageUrl: 'assets/images/martabakmanis.jpg',
+                    points: '50 poin',
+                    name: 'Martabak Manis',
+                  ),
+                  ContainerReward(
+                    imageUrl: 'assets/images/rendang.jpg',
+                    points: '100 poin',
+                    name: 'Rendang',
+                  ),
                 ],
               ),
             ),
@@ -112,54 +137,61 @@ class DaftarMenuPage extends StatelessWidget {
                   Column(
                     children: [
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
-                          imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          expirytext:
+                              'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
+                          imgurl: 'assets/images/promomerdeka.jpg',
+                          promoname: 'Promo Hari Kemerdekaan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Musim Hujan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Akhir Pekan Lebih Seru dengan Hidangan Lezat!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Weekend Spesial',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext: 'Jelajahi Rasa Tradisional Indonesia!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Kuliner Tradisional',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Buka Puasa Lebih Berkah dengan Menu Istimewa!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Ramadhan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext: 'Enak, Murah, dan Mengenyangkan!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Anak Kost',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext: 'Semakin Panas, Semakin Nikmat!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Cinta Pedas',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Santai Sore Lebih Seru dengan Cemilan Tradisional!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Makanan Ringan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Rayakan Hari Spesialmu dengan Hidangan Istimewa!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Hari Spesial',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
-                          expirytext: 'segera Habis masa berlaku nya',
+                          expirytext:
+                              'Kembali ke Masa Lalu dengan Cita Rasa Autentik!',
                           imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Menu 1',
+                          promoname: 'Promo Nostalgia',
                           validitydate: 'Berlaku hingga 31 desember'),
                     ],
                   ),
@@ -185,14 +217,14 @@ class Poin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double mainContainerWidth = screenWidth * 0.7;
+    final double mainContainerWidth = screenWidth * 0.8;
     final double innerContainerWidth = mainContainerWidth * 0.5;
 
     return Center(
       child: Container(
         width: mainContainerWidth,
         padding: EdgeInsets.all(16),
-        color: Colors.yellow,
+        color: Color(0xFFD32F2F),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -205,7 +237,7 @@ class Poin extends StatelessWidget {
                   Image.asset(
                     'assets/images/poin.png',
                     width: 300,
-                    height: 150,
+                    height: 120,
                   ),
                   SizedBox(
                     height: 8,
@@ -222,7 +254,7 @@ class Poin extends StatelessWidget {
             ),
             Text(
               'Pindai kode untuk mendapatkan Poin.',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ],
         ),
@@ -284,15 +316,20 @@ class reward extends StatelessWidget {
 }
 
 // class widget anak
-class containerreward extends StatelessWidget {
-  const containerreward({
+class ContainerReward extends StatelessWidget {
+  final String imageUrl;
+  final String points;
+  final String name;
+  const ContainerReward({
+    required this.imageUrl,
+    required this.points,
+    required this.name,
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      width: 160,
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
@@ -301,8 +338,16 @@ class containerreward extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(
-            'assets/images/drink14.jpg',
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              height: 100,
+              width: double.infinity,
+              child: Image.asset(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           SizedBox(
             height: 10,
@@ -322,7 +367,7 @@ class containerreward extends StatelessWidget {
                       size: 16,
                     ),
                     Text(
-                      '10 poin',
+                      points,
                       style: TextStyle(fontSize: 16),
                     ),
                   ],
@@ -334,7 +379,7 @@ class containerreward extends StatelessWidget {
             height: 13,
           ),
           Text(
-            'Coco Top',
+            name,
             style: TextStyle(fontSize: 18),
           ),
         ],
@@ -371,29 +416,34 @@ class _PromoWidgetState extends State<PromoWidget> {
             onTap: () => _onCategorySelected('tukar sekarang'),
           ),
           PromoCategory(
-            title: 'ayam',
-            isSelected: selectedCategory == 'ayam',
-            onTap: () => _onCategorySelected('ayam'),
+            title: 'Nasi Nusantara',
+            isSelected: selectedCategory == 'Nasi Nusantara',
+            onTap: () => _onCategorySelected('Nasi Nusantara'),
           ),
           PromoCategory(
-            title: 'daging',
-            isSelected: selectedCategory == 'daging',
-            onTap: () => _onCategorySelected('daging'),
+            title: 'Makanan Berkuah',
+            isSelected: selectedCategory == 'Makanan Berkuah',
+            onTap: () => _onCategorySelected('Makanan Berkuah'),
           ),
           PromoCategory(
-            title: 'sarapan',
-            isSelected: selectedCategory == 'sarapan',
-            onTap: () => _onCategorySelected('sarapan'),
+            title: 'grill dan Sate',
+            isSelected: selectedCategory == 'grill dan Sate',
+            onTap: () => _onCategorySelected('grill dan Sate'),
           ),
           PromoCategory(
-            title: 'desert',
-            isSelected: selectedCategory == 'desert',
-            onTap: () => _onCategorySelected('desert'),
+            title: 'Es Segar Nusantara',
+            isSelected: selectedCategory == 'Es Segar Nusantara',
+            onTap: () => _onCategorySelected('Es Segar Nusantara'),
           ),
           PromoCategory(
-            title: 'maincourse',
-            isSelected: selectedCategory == 'maincourse',
-            onTap: () => _onCategorySelected('maincourse'),
+            title: 'Minuman Hangat Tradisional',
+            isSelected: selectedCategory == 'Minuman Hangat Tradisional',
+            onTap: () => _onCategorySelected('Minuman Hangat Tradisional'),
+          ),
+          PromoCategory(
+            title: 'Kopi Nusantara',
+            isSelected: selectedCategory == 'Kopi Nusantara',
+            onTap: () => _onCategorySelected('Kopi Nusantara'),
           ),
         ],
       ),
@@ -420,10 +470,10 @@ class PromoCategory extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.yellow : Colors.white,
+          color: isSelected ? Color(0xFFD32F2F) : Colors.white,
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: isSelected ? Colors.yellow : Colors.grey,
+            color: isSelected ? Color(0xFFD32F2F) : Colors.grey,
             width: 2,
           ),
         ),
@@ -433,7 +483,7 @@ class PromoCategory extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: isSelected ? Colors.black : Colors.grey,
+              color: isSelected ? Colors.white : Colors.black,
             ),
           ),
         ),
@@ -472,6 +522,7 @@ class promocardmenu extends StatelessWidget {
           margin: EdgeInsets.all(10),
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
+            color: Colors.white,
             border: Border.all(color: Colors.grey),
             borderRadius: BorderRadius.circular(8),
           ),
@@ -523,13 +574,13 @@ class mymcdrewardscard extends StatelessWidget {
       margin: EdgeInsets.all(16),
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8),
-      ),
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.white),
       child: Row(
         children: [
           Image.asset(
-            'assets/images/logo_mcd.png',
+            'assets/images/soup.png',
             width: 50,
             height: 50,
           ),
@@ -539,7 +590,7 @@ class mymcdrewardscard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'MyMcd Rewards',
+                  'Kuliner Rewards',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,

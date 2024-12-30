@@ -58,12 +58,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/logo_mcd.png
     - assets/images/qrcode.png
     - assets/images/drink14.jpg
     - assets/images/sushi1.png
     - assets/images/kupon.png
     - assets/images/poin.png
+    - assets/images/soup.png
+    - assets/images/food.png
+    - assets/images/esteh.jpeg
+    - assets/images/esteler.jpeg
+    - assets/images/martabakmanis.jpg
+    - assets/images/rendang.jpg
+    - assets/images/promomerdeka.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

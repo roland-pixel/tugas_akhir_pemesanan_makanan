@@ -129,8 +129,8 @@ class MenuWidget extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                'assets/images/sushi1.png',
-                height: 250,
+                'assets/images/promomerdeka.jpg',
+                fit: BoxFit.contain,
               ),
               SizedBox(height: 10),
               Text(
