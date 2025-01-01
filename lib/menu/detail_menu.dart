@@ -6,6 +6,8 @@ void main() {
   runApp(DetailMenu());
 }
 
+//coba
+
 class DetailMenu extends StatelessWidget {
   const DetailMenu({super.key});
 
