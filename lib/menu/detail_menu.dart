@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'chat.dart';
 import 'daftar_menu.dart';
+import 'ulasan.dart';
 
 void main() {
   runApp(DetailMenu());
@@ -61,8 +62,9 @@ class _AppBarKustomState extends State<AppBarKustom> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Color(0xFFD32F2F),
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Color(0xFFD32F2F)),
+        icon: Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () {
           Navigator.push(
             context,
@@ -74,8 +76,25 @@ class _AppBarKustomState extends State<AppBarKustom> {
         height: 40,
         child: TextField(
           decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.grey,
             hintText: 'Kharis Raihan',
+            hintStyle: TextStyle(color: Colors.black),
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
             border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.black, width: 0.5), // Border saat idle
+              borderRadius: BorderRadius.circular(8),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.black, width: 1), // Border saat fokus
               borderRadius: BorderRadius.circular(8),
             ),
             contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
@@ -84,7 +103,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.share, color: Color(0xFFD32F2F)),
+          icon: Icon(Icons.share, color: Colors.black),
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -95,7 +114,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
         Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.shopping_cart, color: Color(0xFFD32F2F)),
+              icon: Icon(Icons.shopping_cart, color: Colors.black),
               onPressed: () {},
             ),
             Positioned(
@@ -103,7 +122,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
               child: Container(
                 padding: EdgeInsets.all(1),
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.black87,
                   borderRadius: BorderRadius.circular(6),
                 ),
                 constraints: BoxConstraints(
@@ -127,32 +146,87 @@ class _AppBarKustomState extends State<AppBarKustom> {
   }
 }
 
-class MenuWidget extends StatelessWidget {
+class MenuWidget extends StatefulWidget {
+  @override
+  _MenuWidgetState createState() => _MenuWidgetState();
+}
+
+class _MenuWidgetState extends State<MenuWidget> {
+  final List<String> images = [
+    'assets/images/tumpeng.jpg',
+    'assets/images/tumpeng2.jpg',
+  ];
+
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.symmetric(horizontal: 16),
-        child: Card(
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/images/tumpeng.jpg',
-                fit: BoxFit.contain,
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(horizontal: 16),
+      child: Card(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                SizedBox(
+                  height: 250,
+                  child: PageView.builder(
+                    itemCount: images.length,
+                    onPageChanged: (index) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                    itemBuilder: (context, index) {
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          images[index],
+                          width: double.infinity,
+                          height: 250,
+                          fit: BoxFit
+                              .contain, // Mengatur gambar agar memenuhi container
+                        ),
+                      );
+                    },
+                  ),
                 ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      '${currentIndex + 1} / ${images.length}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              SizedBox(height: 10), // Menambahkan jarak setelah teks
-            ],
-          ),
-        ));
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -242,17 +316,35 @@ class _PenilaianwidgetState extends State<Penilaianwidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Semua Ulasan',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Semua Ulasan',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AllReviewsPage()),
+                );
+              },
+              child: Text(
+                'Lihat Semua',
+                style: TextStyle(fontSize: 14, color: Colors.blue),
+              ),
+            ),
+          ],
         ),
         RatingCard(
           nama: 'Dedy',
           penggunaSejak: '11 September 2024',
           rating: '5.0',
           komentar:
-              'Tumpeng Merah Putih ini luar biasa! Penyajian sangat cantik, dan rasanya benar-benar otentik khas Nusantara. Nasi kuningnya harum, lauk-pauknya lengkap dan lezat, terutama ayam goreng bumbu rempahnya. Lemon Tea sebagai pendamping juga sangat menyegarkan. Sangat cocok untuk dinikmati bersama keluarga. Pasti akan pesan lagi di lain kesempatan!',
+              'Tumpeng Merah Putih ini luar biasa! Penyajian sangat cantik, dan rasanya benar-benar otentik khas Nusantara.',
           tanggal: '13 Desember 2024',
         ),
         RatingCard(
@@ -260,7 +352,7 @@ class _PenilaianwidgetState extends State<Penilaianwidget> {
           penggunaSejak: '25 Februari 2019',
           rating: '3.0',
           komentar:
-              'Tumpengnya lumayan enak, tapi menurut saya porsinya agak kecil untuk harga yang ditawarkan. Nasi kuningnya sedikit kurang gurih, dan lauk-pauknya terasa biasa saja. Lemon Tea cukup menyegarkan, tapi tidak ada yang istimewa. Bisa jadi pilihan, tapi ada ruang untuk perbaikan.',
+              'Tumpengnya lumayan enak, tapi menurut saya porsinya agak kecil untuk harga yang ditawarkan.',
           tanggal: '20 September 2024',
         ),
         RatingCard(
@@ -268,8 +360,8 @@ class _PenilaianwidgetState extends State<Penilaianwidget> {
           penggunaSejak: '5 Juni 2022',
           rating: '1.0',
           komentar:
-              'Saya sangat kecewa dengan menu ini. Nasi kuningnya terasa hambar, dan beberapa lauk terlihat tidak segar. Kerupuknya sudah melempem, dan sambalnya tidak pedas seperti yang diharapkan. Sangat tidak sesuai dengan ekspektasi saya, apalagi untuk sebuah promo spesial.',
-          tanggal: '1 januari 2025',
+              'Saya sangat kecewa dengan menu ini. Nasi kuningnya terasa hambar, dan beberapa lauk terlihat tidak segar.',
+          tanggal: '1 Januari 2025',
         ),
       ],
     );
