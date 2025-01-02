@@ -139,7 +139,7 @@ class DaftarMenuPage extends StatelessWidget {
                       promocardmenu(
                           expirytext:
                               'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
-                          imgurl: 'assets/images/promomerdeka.jpg',
+                          imgurl: 'assets/images/tumpeng.jpg',
                           promoname: 'Promo Hari Kemerdekaan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(

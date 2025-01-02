@@ -62,7 +62,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Colors.orange),
+        icon: Icon(Icons.arrow_back, color: Color(0xFFD32F2F)),
         onPressed: () {
           Navigator.push(
             context,
@@ -70,15 +70,21 @@ class _AppBarKustomState extends State<AppBarKustom> {
           );
         },
       ),
-      title: TextField(
-        decoration: InputDecoration(
-          hintText: 'Paket Panas',
-          border: InputBorder.none,
+      title: SizedBox(
+        height: 40,
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: 'Kharis Raihan',
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+          ),
         ),
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.share, color: Colors.orange),
+          icon: Icon(Icons.share, color: Color(0xFFD32F2F)),
           onPressed: () {
             showModalBottomSheet(
               context: context,
@@ -89,7 +95,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
         Stack(
           children: [
             IconButton(
-              icon: Icon(Icons.shopping_cart, color: Colors.orange),
+              icon: Icon(Icons.shopping_cart, color: Color(0xFFD32F2F)),
               onPressed: () {},
             ),
             Positioned(
@@ -97,7 +103,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
               child: Container(
                 padding: EdgeInsets.all(1),
                 decoration: BoxDecoration(
-                  color: Colors.red,
+                  color: Colors.black,
                   borderRadius: BorderRadius.circular(6),
                 ),
                 constraints: BoxConstraints(
@@ -131,12 +137,12 @@ class MenuWidget extends StatelessWidget {
           child: Column(
             children: [
               Image.asset(
-                'assets/images/promomerdeka.jpg',
+                'assets/images/tumpeng.jpg',
                 fit: BoxFit.contain,
               ),
               SizedBox(height: 10),
               Text(
-                'Nikmati PaNas 1 hanya Dengan 25 Ribu',
+                'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
