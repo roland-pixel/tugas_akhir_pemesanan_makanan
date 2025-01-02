@@ -26,7 +26,7 @@ class _chatappbarState extends State<chatappbar> {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Colors.white),
+        icon: Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () {
           Navigator.push(
             context,
@@ -38,7 +38,7 @@ class _chatappbarState extends State<chatappbar> {
         children: [
           CircleAvatar(
             backgroundImage: AssetImage(
-                'assets/images/logo_mcd.png'), // Ganti dengan gambar Anda
+                'assets/images/food.png'), // Ganti dengan gambar Anda
             radius: 20,
           ),
           SizedBox(width: 10),
@@ -46,18 +46,21 @@ class _chatappbarState extends State<chatappbar> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'MCD APP',
-                style: TextStyle(fontSize: 16),
+                'KID APP',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold),
               ),
               Text(
                 'Aktif 20 detik lalu',
-                style: TextStyle(fontSize: 12, color: Colors.white70),
+                style: TextStyle(fontSize: 12, color: Colors.black),
               ),
             ],
           ),
         ],
       ),
-      backgroundColor: Colors.grey,
+      backgroundColor: Color(0xFFD32F2F),
     );
   }
 }
@@ -69,8 +72,8 @@ class TodaySection extends StatefulWidget {
 
 class _TodaySectionState extends State<TodaySection> {
   final List<Map<String, dynamic>> messages = [
-    {"text": "Apakah barang ini ready?", "isSender": true},
-    {"text": "Ya, barang ini ready kak!", "isSender": false},
+    {"text": "Apakah menu ini ready?", "isSender": true},
+    {"text": "Ya, menu ini ready kak!", "isSender": false},
     {"text": "Berapa lama estimasi pengiriman?", "isSender": true},
     {"text": "Estimasi pengiriman 3-5 hari kerja.", "isSender": false},
   ];
@@ -94,7 +97,7 @@ class _TodaySectionState extends State<TodaySection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Kamu bertanya tentang produk ini',
+                    'Kamu bertanya tentang menu ini',
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.grey,
@@ -103,12 +106,12 @@ class _TodaySectionState extends State<TodaySection> {
                   SizedBox(height: 10),
                   ListTile(
                     leading: Image.asset(
-                      'assets/images/sushi1.png', // Ganti dengan gambar produk Anda
+                      'assets/images/tumpeng.jpg', // Ganti dengan gambar produk Anda
                       width: 50,
                       height: 50,
                     ),
                     title: Text(
-                      'GAMEN Fan Cooler Hp Heatsink Magnetic',
+                      'Promo Hari Kemerdekaan',
                       style: TextStyle(fontSize: 14),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -116,13 +119,13 @@ class _TodaySectionState extends State<TodaySection> {
                     subtitle: Row(
                       children: [
                         Text(
-                          'Rp119.999',
+                          'Rp150.000',
                           style: TextStyle(
                               color: Colors.red, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(width: 10),
                         Text(
-                          'Rp550.000',
+                          'Rp200.000',
                           style: TextStyle(
                             color: Colors.grey,
                             decoration: TextDecoration.lineThrough,

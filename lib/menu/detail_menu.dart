@@ -187,16 +187,23 @@ class _DeskripsiWidgetState extends State<DeskripsiWidget> {
             ),
             SizedBox(height: 8),
             Text(
-              'Warna',
+              'Detail Menu',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
-            Text('Titanium Silver'),
-            Text('Carbon Black'),
+            Text('Tumpeng Spesial Merah Putih'),
+            Text('Puding Buah'),
+            Text('Lemon Tea'),
             SizedBox(height: 16),
-            Text(_showFullDeskripsi
-                ? 'Deskripsi lengkap makanan: Ini adalah makanan yang sangat lezat dan bergizi. Cocok untuk semua kalangan usia dan dapat dinikmati kapan saja.'
-                : 'Deskripsi lengkap makanan: Ini adalah makanan yang sangat lezat...'),
+            Text(
+              _showFullDeskripsi
+                  ? 'Rayakan Hari Kemerdekaan dengan Tumpeng Spesial Merah Putih, sajian istimewa yang menghadirkan cita rasa khas Nusantara dalam satu hidangan penuh makna. Tumpeng ini disusun dengan indah, memadukan nasi kuning gurih dan nasi putih yang melambangkan semangat persatuan dan kesatuan.\n\n'
+                      'Dilengkapi dengan aneka lauk-pauk pilihan, seperti ayam goreng bumbu rempah, orek tempe, urap sayur segar, dan telur balado yang kaya rasa, setiap elemen dalam tumpeng ini menghadirkan kelezatan khas Indonesia. Tak lupa kerupuk renyah dan sambal pedas untuk menambah kesempurnaan rasa.\n\n'
+                      'Sebagai pelengkap, kami sajikan 2 gelas Lemon Tea segar untuk menemani hidangan Anda. Rasa asam-manis yang menyegarkan dari lemon tea ini akan membuat pengalaman bersantap Anda semakin istimewa.\n\n'
+                      'Nikmati hidangan ini bersama orang-orang terdekat dan rasakan semangat kemerdekaan dalam setiap gigitan! Promo ini hanya tersedia untuk waktu terbatas, jadi pastikan Anda tidak melewatkannya.'
+                  : 'Rayakan Hari Kemerdekaan dengan Tumpeng Spesial Merah Putih...',
+              textAlign: TextAlign.justify,
+            ),
             Divider(),
             Align(
               alignment: Alignment.center,
@@ -244,8 +251,8 @@ class _PenilaianwidgetState extends State<Penilaianwidget> {
           nama: 'Dedy',
           penggunaSejak: '11 September 2024',
           rating: '5.0',
-          komentar: 'Mantap pelayanan cepat dan driver gacor',
-          menu: 'Nasi Goreng Mawut',
+          komentar:
+              'Tumpeng Merah Putih ini luar biasa! Penyajian sangat cantik, dan rasanya benar-benar otentik khas Nusantara. Nasi kuningnya harum, lauk-pauknya lengkap dan lezat, terutama ayam goreng bumbu rempahnya. Lemon Tea sebagai pendamping juga sangat menyegarkan. Sangat cocok untuk dinikmati bersama keluarga. Pasti akan pesan lagi di lain kesempatan!',
           tanggal: '13 Desember 2024',
         ),
         RatingCard(
@@ -253,18 +260,16 @@ class _PenilaianwidgetState extends State<Penilaianwidget> {
           penggunaSejak: '25 Februari 2019',
           rating: '3.0',
           komentar:
-              'Kirain spesial dapat hati atau apa ternyata cuman telur sama ayam ak',
-          menu: 'Nasi Goreng Saos Merah Spesial',
+              'Tumpengnya lumayan enak, tapi menurut saya porsinya agak kecil untuk harga yang ditawarkan. Nasi kuningnya sedikit kurang gurih, dan lauk-pauknya terasa biasa saja. Lemon Tea cukup menyegarkan, tapi tidak ada yang istimewa. Bisa jadi pilihan, tapi ada ruang untuk perbaikan.',
           tanggal: '20 September 2024',
         ),
         RatingCard(
-          nama: 'Hafizh',
-          penggunaSejak: '25 Februari 2019',
-          rating: '3.0',
+          nama: 'Wati',
+          penggunaSejak: '5 Juni 2022',
+          rating: '1.0',
           komentar:
-              'Kirain spesial dapat hati atau apa ternyata cuman telur sama ayam ak',
-          menu: 'Nasi Goreng Saos Merah Spesial',
-          tanggal: '20 September 2024',
+              'Saya sangat kecewa dengan menu ini. Nasi kuningnya terasa hambar, dan beberapa lauk terlihat tidak segar. Kerupuknya sudah melempem, dan sambalnya tidak pedas seperti yang diharapkan. Sangat tidak sesuai dengan ekspektasi saya, apalagi untuk sebuah promo spesial.',
+          tanggal: '1 januari 2025',
         ),
       ],
     );
@@ -276,7 +281,6 @@ class RatingCard extends StatelessWidget {
   final String penggunaSejak;
   final String rating;
   final String komentar;
-  final String menu;
   final String tanggal;
 
   RatingCard({
@@ -284,7 +288,6 @@ class RatingCard extends StatelessWidget {
     required this.penggunaSejak,
     required this.rating,
     required this.komentar,
-    required this.menu,
     required this.tanggal,
   });
 
@@ -307,7 +310,7 @@ class RatingCard extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                'Pengguna MCD App sejak $penggunaSejak',
+                'Pengguna KID App sejak $penggunaSejak',
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
               SizedBox(height: 6),
@@ -316,12 +319,12 @@ class RatingCard extends StatelessWidget {
                 style: TextStyle(fontSize: 14),
               ),
               SizedBox(height: 4),
-              Text(komentar, style: TextStyle(fontSize: 14)),
-              SizedBox(height: 6),
               Text(
-                menu,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                komentar,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 14),
               ),
+              SizedBox(height: 6),
               SizedBox(height: 4),
               Text(
                 tanggal,
@@ -380,7 +383,7 @@ class customnavigationbar extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  color: Colors.orange,
+                  color: Color(0xFFD32F2F),
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -393,7 +396,7 @@ class customnavigationbar extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Voucher Rp5.524.053',
+                        'Rp150.000',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -444,7 +447,7 @@ class ShareWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 20,
-                backgroundColor: Colors.yellow,
+                backgroundColor: Colors.red,
                 child: Icon(Icons.perm_contact_cal, color: Colors.white),
               ),
               SizedBox(width: 8),
@@ -456,7 +459,7 @@ class ShareWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'Bagikan ke Teman Shopee dan kontak lainnya',
+                    'Bagikan ke Teman KID dan kontak lainnya',
                     style: TextStyle(fontSize: 14),
                   ),
                 ],
@@ -561,7 +564,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     child: Stack(
                       children: [
                         Image.asset(
-                          'assets/images/sushi1.png',
+                          'assets/images/tumpeng.jpg',
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,
@@ -583,12 +586,12 @@ class _ProductWidgetState extends State<ProductWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Harga: Rp5.524.053',
+                          'Harga: Rp150.000',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'Stok: 1080',
+                          'Stok: 30',
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey,
@@ -662,7 +665,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 onPressed: () {},
                 child: Text('Beli Sekarang'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Color(0xFFD32F2F),
                   foregroundColor: Colors.white,
                   minimumSize: Size(MediaQuery.of(context).size.width - 32, 50),
                 ),
