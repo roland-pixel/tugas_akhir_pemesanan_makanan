@@ -153,8 +153,11 @@ class MenuWidget extends StatefulWidget {
 
 class _MenuWidgetState extends State<MenuWidget> {
   final List<String> images = [
-    'assets/images/tumpeng.jpg',
-    'assets/images/tumpeng2.jpg',
+    'assets/images/menu/tumpeng.jpg',
+    'assets/images/menu/tumpeng2.jpg',
+    'assets/images/menu/tumpeng3.jpeg',
+    'assets/images/menu/tumpeng4.jpeg',
+    'assets/images/menu/tumpeng5.jpeg',
   ];
 
   int currentIndex = 0;
@@ -215,7 +218,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             SizedBox(height: 10),
             Text(
               'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -656,7 +659,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     child: Stack(
                       children: [
                         Image.asset(
-                          'assets/images/tumpeng.jpg',
+                          'assets/images/menu/tumpeng.jpg',
                           width: 100,
                           height: 100,
                           fit: BoxFit.cover,

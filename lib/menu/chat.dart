@@ -106,7 +106,7 @@ class _TodaySectionState extends State<TodaySection> {
                   SizedBox(height: 10),
                   ListTile(
                     leading: Image.asset(
-                      'assets/images/tumpeng.jpg', // Ganti dengan gambar produk Anda
+                      'assets/images/menu/tumpeng.jpg', // Ganti dengan gambar produk Anda
                       width: 50,
                       height: 50,
                     ),

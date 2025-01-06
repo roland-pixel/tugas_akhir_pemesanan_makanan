@@ -92,22 +92,22 @@ class DaftarMenuPage extends StatelessWidget {
               child: Row(
                 children: [
                   ContainerReward(
-                    imageUrl: 'assets/images/esteh.jpeg',
+                    imageUrl: 'assets/images/menu/esteh.jpeg',
                     points: '10 poin',
                     name: 'Es Teh',
                   ),
                   ContainerReward(
-                    imageUrl: 'assets/images/esteler.jpeg',
+                    imageUrl: 'assets/images/menu/esteler.jpeg',
                     points: '25 poin',
                     name: 'Es Teler',
                   ),
                   ContainerReward(
-                    imageUrl: 'assets/images/martabakmanis.jpg',
+                    imageUrl: 'assets/images/menu/martabakmanis.jpg',
                     points: '50 poin',
                     name: 'Martabak Manis',
                   ),
                   ContainerReward(
-                    imageUrl: 'assets/images/rendang.jpg',
+                    imageUrl: 'assets/images/menu/rendang.jpg',
                     points: '100 poin',
                     name: 'Rendang',
                   ),
@@ -139,7 +139,7 @@ class DaftarMenuPage extends StatelessWidget {
                       promocardmenu(
                           expirytext:
                               'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
-                          imgurl: 'assets/images/tumpeng.jpg',
+                          imgurl: 'assets/images/menu/tumpeng.jpg',
                           promoname: 'Promo Hari Kemerdekaan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
