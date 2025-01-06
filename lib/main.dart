@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'menu/daftar_menu.dart'; // Import halaman daftar menu
+import 'menu/daftar_menu.dart'; // Import halaman daftar menu\
+import 'cart/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-          DaftarMenuPage(), // Hanya menampilkan halaman daftar menu untuk sementara
+          ShoppingCartPage()
     );
   }
 }
