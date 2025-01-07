@@ -62,6 +62,10 @@ flutter:
     - assets/images/qrcode.png
     - assets/images/drink14.jpg
     - assets/images/sushi1.png
+    - assets/images/bubur.jpg
+    - assets/images/soto.jpg
+    - assets/images/piring.jpg
+    - assets/images/pecel.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
