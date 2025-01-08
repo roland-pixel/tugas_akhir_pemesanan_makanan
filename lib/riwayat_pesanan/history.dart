@@ -23,7 +23,7 @@ class RiwayatPemesananPage extends StatelessWidget {
       'description': 'Nasi lembek dengan suwiran ayam dan kerupuk.',
       'price': 'Rp 10.000',
       'image': 'assets/images/bubur.jpg',
-      'quantity': 2,
+      'quantity': 2, 
     },
     {
       'name': 'Soto Ayam',
@@ -33,7 +33,7 @@ class RiwayatPemesananPage extends StatelessWidget {
     },
     {
       'name': 'Pecel Lele',
-      'description': 'Lele goreng dengan sambal dan lalapan.',
+      'description': 'Sayur sayuran yang direbus dan dikasih bumbu kacang kental.',
       'price': 'Rp 15.000',
       'image': 'assets/images/pecel.jpg',
     },
@@ -43,29 +43,28 @@ class RiwayatPemesananPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya
-          },
-        ),
-        title: Row(
-          children: [
-            const SizedBox(width: 350), // Jarak antara logo dan teks
-            const Text(
-              'Riwayat Pemesanan',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
-            const SizedBox(width: 380), // Jarak antara teks dan ikon
-            const Icon(
-              Icons.history,
-              color: Colors
-                  .black, // Anda dapat mengubah warna ikon sesuai kebutuhan
-            ),
-          ],
-        ),
+  backgroundColor: Colors.yellow,
+  leading: IconButton(
+    icon: const Icon(Icons.arrow_back),
+    onPressed: () {
+      Navigator.pop(context); // Kembali ke halaman sebelumnya
+    },
+  ),
+  title: Row(
+    children: [
+      const Text(
+        'Riwayat Pemesanan',
+        style: TextStyle(fontSize: 20, color: Colors.black),
       ),
+      const Spacer(), // Spacer akan mendorong ikon ke kanan
+      const Icon(
+        Icons.history,
+        color: Colors.black,
+      ),
+    ],
+  ),
+),
+
       body: ListView.builder(
         itemCount: riwayatPemesanan.length,
         itemBuilder: (context, index) {
@@ -86,8 +85,7 @@ class RiwayatPemesananPage extends StatelessWidget {
             },
             child: Card(
               elevation: 4,
-              margin:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
               child: ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
