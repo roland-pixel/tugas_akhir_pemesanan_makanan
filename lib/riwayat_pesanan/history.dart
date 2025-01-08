@@ -23,7 +23,7 @@ class RiwayatPemesananPage extends StatelessWidget {
       'description': 'Nasi lembek dengan suwiran ayam dan kerupuk.',
       'price': 'Rp 10.000',
       'image': 'assets/images/bubur.jpg',
-      'quantity': 2, 
+      'quantity': 2,
     },
     {
       'name': 'Soto Ayam',
@@ -60,7 +60,8 @@ class RiwayatPemesananPage extends StatelessWidget {
             const SizedBox(width: 380), // Jarak antara teks dan ikon
             const Icon(
               Icons.history,
-              color: Colors.black, // mengubah warna ikon sesuai kebutuhan
+              color: Colors
+                  .black, // Anda dapat mengubah warna ikon sesuai kebutuhan
             ),
           ],
         ),
@@ -85,7 +86,8 @@ class RiwayatPemesananPage extends StatelessWidget {
             },
             child: Card(
               elevation: 4,
-              margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
+              margin:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
               child: ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
