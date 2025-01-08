@@ -57,10 +57,10 @@ class RiwayatPemesananPage extends StatelessWidget {
               'Riwayat Pemesanan',
               style: TextStyle(fontSize: 20, color: Colors.black),
             ),
-            const SizedBox(width: 380), // Jarak 100 piksel antara teks dan ikon
+            const SizedBox(width: 380), // Jarak antara teks dan ikon
             const Icon(
               Icons.history,
-              color: Colors.black, // Anda dapat mengubah warna ikon sesuai kebutuhan
+              color: Colors.black, // mengubah warna ikon sesuai kebutuhan
             ),
           ],
         ),
