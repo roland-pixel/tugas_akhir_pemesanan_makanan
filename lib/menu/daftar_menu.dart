@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_akhir_pemesanan_makanan/menu/detail_menu.dart';
+import '../buttomnavbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -204,6 +205,11 @@ class DaftarMenuPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: CustomBottomNavBar(
+        onItemSelected: (index) {
+          print("selected index: $index");
+        },
       ),
     );
   }
