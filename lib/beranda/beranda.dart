@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
       home: BerandaScreen(),
       routes: {
         '/daftarMenu': (context) => DaftarMenuPage(),
@@ -64,9 +65,9 @@ class BerandaScreen extends StatelessWidget {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
               children: [
-          menuItem(context, 'Daftar Menu', Icons.food_bank, '/daftarMenu'),
-          menuItem(context, 'Keranjang', Icons.shopping_cart, '/keranjang'),
-          menuItem(context, 'Riwayat', Icons.history, '/riwayat'),
+                MenuItem(title: 'Daftar Menu', icon: Icons.food_bank, route: '/daftarMenu'),
+                MenuItem(title: 'Keranjang', icon: Icons.shopping_cart, route: '/keranjang'),
+                MenuItem(title: 'Riwayat', icon: Icons.history, route: '/riwayat'),
               ],
             ),
             SizedBox(height: 20),
@@ -89,25 +90,23 @@ class BerandaScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   promocardmenu(
-                          expirytext:
-                              'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
-                          imgurl: 'assets/images/menu/tumpeng.jpg',
-                          promoname: 'Promo Hari Kemerdekaan',
-                          validitydate: 'Berlaku hingga 31 desember'),
-                      promocardmenu(
-                          expirytext:
-                              'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
-                          imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Musim Hujan',
-                          validitydate: 'Berlaku hingga 31 desember'),
-                      promocardmenu(
-                          expirytext:
-                              'Akhir Pekan Lebih Seru dengan Hidangan Lezat!',
-                          imgurl: 'assets/images/sushi1.png',
-                          promoname: 'Promo Weekend Spesial',
-                          validitydate: 'Berlaku hingga 31 desember'),
-
-
+                    expirytext: 'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
+                    imgurl: 'assets/images/menu/tumpeng.jpg',
+                    promoname: 'Promo Hari Kemerdekaan',
+                    validitydate: 'Berlaku hingga 31 desember',
+                  ),
+                  promocardmenu(
+                    expirytext: 'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
+                    imgurl: 'assets/images/sushi1.png',
+                    promoname: 'Promo Musim Hujan',
+                    validitydate: 'Berlaku hingga 31 desember',
+                  ),
+                  promocardmenu(
+                    expirytext: 'Akhir Pekan Lebih Seru dengan Hidangan Lezat!',
+                    imgurl: 'assets/images/sushi1.png',
+                    promoname: 'Promo Weekend Spesial',
+                    validitydate: 'Berlaku hingga 31 desember',
+                  ),
                 ],
               ),
             ),
@@ -116,28 +115,60 @@ class BerandaScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  // Widget untuk membuat menu item di GridView
-   Widget menuItem(BuildContext context, String title, IconData icon, String route) {
-    return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
+// MenuItem widget for the grid view
+class MenuItem extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final String route;
+
+  const MenuItem({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.route,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
       onTap: () {
-        // Navigate to the respective route when an item is clicked
-        Navigator.pushNamed(context, route);
+        Navigator.pushNamed(context, route); // Navigate to the respective route
       },
+      child: Card(
+        elevation: 5,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                icon,
+                size: 30,
+                color: Colors.blue,
+              ),
+              SizedBox(height: 10),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.blue,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
-
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight); // Standard AppBar height
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
@@ -149,59 +180,49 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return AppBar(
       title: Row(
         children: [
-          // Title "Beranda" on the left
           Text('Beranda'),
-          // Spacer to push search box towards the center
           Spacer(),
-          // Search Box
-          if (_isSearching) 
+          if (_isSearching)
             Container(
-              width: 200, // Set width of the search box
+              width: 200,
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search), // Search icon inside the text field
+                  prefixIcon: Icon(Icons.search),
                   hintText: 'Cari...',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25.0),
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 255, 255),
+                  fillColor: Colors.white,
                 ),
                 style: TextStyle(color: Colors.black),
                 autofocus: true,
               ),
             ),
-          // Notification Icon on the right
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(_isSearching ? Icons.cancel : Icons.search),
             onPressed: () {
-              // Action for notification
+              setState(() {
+                _isSearching = !_isSearching;
+                if (!_isSearching) _searchController.clear();
+              });
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
               print('Notifikasi');
             },
           ),
         ],
       ),
-      actions: [
-        IconButton(
-          icon: Icon(_isSearching ? Icons.cancel : Icons.search),
-          onPressed: () {
-            setState(() {
-              if (_isSearching) {
-                _isSearching = false;
-                _searchController.clear(); // Clear search text
-              } else {
-                _isSearching = true;
-              }
-            });
-          },
-        ),
-      ],
     );
   }
 }
 
+// Promo Card Widget
 class promocardmenu extends StatelessWidget {
   final String expirytext;
   final String imgurl;
