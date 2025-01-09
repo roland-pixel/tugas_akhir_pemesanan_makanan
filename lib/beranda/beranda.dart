@@ -180,7 +180,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return AppBar(
       title: Row(
         children: [
-          Text('Beranda'),
+          Text('9 11 Meals', style: TextStyle( fontWeight: FontWeight.bold),),
+
           Spacer(),
           if (_isSearching)
             Container(
