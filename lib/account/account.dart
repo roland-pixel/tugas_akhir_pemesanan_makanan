@@ -206,6 +206,7 @@ class OrderCard extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
 
 // Widget untuk Tempat di Sekitar
 class NearbyPlaces extends StatelessWidget {
@@ -264,3 +265,5 @@ class NearbyPlaceCard extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> feb3c10d7f50f7fd54e0fa9f078ba6e77f642128
