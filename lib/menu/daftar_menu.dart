@@ -145,52 +145,52 @@ class DaftarMenuPage extends StatelessWidget {
                       promocardmenu(
                           expirytext:
                               'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/bakso.jpg',
                           promoname: 'Promo Musim Hujan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext:
                               'Akhir Pekan Lebih Seru dengan Hidangan Lezat!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/bubur.jpg',
                           promoname: 'Promo Weekend Spesial',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext: 'Jelajahi Rasa Tradisional Indonesia!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/soto.jpg',
                           promoname: 'Promo Kuliner Tradisional',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext:
                               'Buka Puasa Lebih Berkah dengan Menu Istimewa!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/kolak_pisang.jpg',
                           promoname: 'Promo Ramadhan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext: 'Enak, Murah, dan Mengenyangkan!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/nasi_goreng_telur.jpg',
                           promoname: 'Promo Anak Kost',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext: 'Semakin Panas, Semakin Nikmat!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/seblak.jpg',
                           promoname: 'Promo Cinta Pedas',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext:
                               'Santai Sore Lebih Seru dengan Cemilan Tradisional!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/pisang_goreng.jpeg',
                           promoname: 'Promo Makanan Ringan',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext:
                               'Rayakan Hari Spesialmu dengan Hidangan Istimewa!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/nasi_liwet.jpg',
                           promoname: 'Promo Hari Spesial',
                           validitydate: 'Berlaku hingga 31 desember'),
                       promocardmenu(
                           expirytext:
                               'Kembali ke Masa Lalu dengan Cita Rasa Autentik!',
-                          imgurl: 'assets/images/sushi1.png',
+                          imgurl: 'assets/images/menu/gado_gado.jpeg',
                           promoname: 'Promo Nostalgia',
                           validitydate: 'Berlaku hingga 31 desember'),
                     ],
