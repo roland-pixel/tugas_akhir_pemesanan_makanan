@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir_pemesanan_makanan/cart/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,16 +19,60 @@ class MyApp extends StatelessWidget {
 
 class ShoppingCartPage extends StatelessWidget {
   final List<CartItem> cartItems = [
-    CartItem(name: 'Sepatu sneaker wom...', price: 75.99, image: 'assets/shoes.png'),
-    CartItem(name: 'Tas Selempang', price: 41.99, image: 'assets/bag.png'),
+    CartItem(name: 'ES Teh...', points: 10, image: 'assets/images/menu/esteh.jpeg'),
+    CartItem(name: 'Martabak Manis', points: 50, image: 'assets/images/menu/martabakmanis.jpg'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
-        centerTitle: true,
+        backgroundColor: Colors.red, // Warna latar belakang
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            // Tambahkan logika untuk tombol kembali jika diperlukan
+          },
+        ),
+        title: Row(
+          children: [
+            const Text(
+              'Kuliner',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(width: 5),
+            Image.asset(
+              'assets/images/soup.png',
+              width: 30,
+              height: 30,
+            ),
+            const Spacer(),
+            InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  const Text(
+                    '0 poin',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.black,
+                    size: 15,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
@@ -46,7 +91,7 @@ class ShoppingCartPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Total: \$${calculateTotal(cartItems).toStringAsFixed(2)}',
+                  'Total: ${calculateTotal(cartItems)} poin',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton(
@@ -64,17 +109,17 @@ class ShoppingCartPage extends StatelessWidget {
     );
   }
 
-  double calculateTotal(List<CartItem> items) {
-    return items.fold(0, (sum, item) => sum + item.price);
+  int calculateTotal(List<CartItem> items) {
+    return items.fold(0, (sum, item) => sum + item.points);
   }
 }
 
 class CartItem {
   final String name;
-  final double price;
+  final int points;
   final String image;
 
-  CartItem({required this.name, required this.price, required this.image});
+  CartItem({required this.name, required this.points, required this.image});
 }
 
 class CartItemWidget extends StatelessWidget {
@@ -92,7 +137,7 @@ class CartItemWidget extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: Text(item.name),
-      subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
+      subtitle: Text('${item.points} poin'),
       trailing: Checkbox(value: true, onChanged: (value) {}),
     );
   }
