@@ -128,7 +128,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 setState(() {
                   _selectedPaymentMethod = value;
                 });
-              },
+                },
             ),
             SizedBox(height: 20),
             Center(
