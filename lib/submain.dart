@@ -67,47 +67,33 @@ class CustomBottomNavBar extends StatelessWidget {
       height: 70,
       padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: const Color(0xFFD32F2F), // Warna utama navbar menjadi merah
+        gradient: LinearGradient(
+          colors: [Color(0xFFD32F2F), Color(0xFFB71C1C)], // Gradient background
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.15),
             blurRadius: 12,
-            offset: Offset(0, -4), // Bayangan lebih besar
+            offset: const Offset(0, -4),
           ),
         ],
-        // borderRadius: const BorderRadius.only(
-        //   topLeft: Radius.circular(20),
-        //   topRight: Radius.circular(20),
-        // ), // Sudut melingkar
+        // Rounded top corners
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(
-            icon: Icons.food_bank,
-            index: 0,
-            isSelected: currentIndex == 0,
-          ),
-          _buildHomeNavItem(
-            icon: Icons.home,
-            index: 1,
-            isSelected: currentIndex == 1,
-          ),
-          _buildNavItem(
-            icon: Icons.person,
-            index: 2,
-            isSelected: currentIndex == 2,
-          ),
+          _buildNavItem(icon: Icons.food_bank, index: 0),
+          _buildHomeNavItem(icon: Icons.home, index: 1),
+          _buildNavItem(icon: Icons.person, index: 2),
         ],
       ),
     );
   }
 
-  Widget _buildNavItem({
-    required IconData icon,
-    required int index,
-    required bool isSelected,
-  }) {
+  Widget _buildNavItem({required IconData icon, required int index}) {
+    final isSelected = currentIndex == index;
     return Flexible(
       child: GestureDetector(
         onTap: () => onItemSelected(index),
@@ -121,35 +107,45 @@ class CustomBottomNavBar extends StatelessWidget {
           ),
           child: Icon(
             icon,
-            size: isSelected ? 30 : 25, // Ukuran ikon aktif lebih besar
-            color: isSelected ? Colors.white : Colors.black, // Warna aktif
+            size: isSelected ? 30 : 25,
+            color: isSelected ? Colors.white : Colors.black,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildHomeNavItem({
-    required IconData icon,
-    required int index,
-    required bool isSelected,
-  }) {
+  Widget _buildHomeNavItem({required IconData icon, required int index}) {
+    final isSelected = currentIndex == index;
     return Flexible(
       child: GestureDetector(
         onTap: () => onItemSelected(index),
         child: Container(
-          height: 70, // Sesuaikan dengan tinggi navbar
-          width: 70, // Sesuaikan dengan lebar navbar
+          height: 70,
+          width: 70,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.black,
+            color: isSelected
+                ? Colors.white
+                : Colors.black, // Change color based on selection
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ]
+                : null,
           ),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             child: Icon(
               icon,
-              size: isSelected ? 28 : 24, // Ukuran ikon aktif lebih besar
-              color: Colors.red, // Warna ikon tetap putih
+              size: isSelected ? 28 : 24,
+              color: isSelected
+                  ? Colors.red
+                  : Colors.white, // Change icon color based on selection
             ),
           ),
         ),
