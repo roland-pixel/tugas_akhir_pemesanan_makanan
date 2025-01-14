@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  lottie: ^2.3.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -87,6 +88,13 @@ flutter:
     - assets/images/food1.jpg
     - assets/images/food2.jpg
     - assets/images/food3.jpg
+    - assets/images/judul1.png
+    - assets/images/kidnapp_logo.png
+    - assets/images/menu/tumpeng5.jpeg
+    - assets/created_account.json
+    - assets/loading.json
+    - assets/loading1.json
+    - assets/verified.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -28,17 +28,18 @@ class _chatappbarState extends State<chatappbar> {
       leading: IconButton(
         icon: Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailMenu()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => DetailMenu()),
+          // );
+          Navigator.pop(context);
         },
       ),
       title: Row(
         children: [
           CircleAvatar(
             backgroundImage: AssetImage(
-                'assets/images/food.png'), // Ganti dengan gambar Anda
+                'assets/images/kidnapp_logo.png'), // Ganti dengan gambar Anda
             radius: 20,
           ),
           SizedBox(width: 10),

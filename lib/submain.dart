@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'beranda/beranda.dart';
 import 'menu/daftar_menu.dart';
-import 'riwayat_pesanan/history.dart';
+import 'account/account.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,13 +23,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0; // Indeks halaman aktif
+  int _currentIndex = 1; // Indeks halaman aktif
 
   // Daftar halaman
   final List<Widget> _pages = [
-    BerandaScreen(), // Halaman Home
     DaftarMenuPage(),
-    RiwayatPemesananPage(), // Halaman Account
+    BerandaScreen(), // Halaman Home
+    HomePage(), // Halaman Account
   ];
 
   // Fungsi untuk mengganti halaman
@@ -65,66 +65,90 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70,
+      padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: const Color(0xFFD32F2F), // Warna utama navbar
+        gradient: LinearGradient(
+          colors: [Color(0xFFD32F2F), Color(0xFFB71C1C)], // Gradient background
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: Offset(0, -2), // Bayangan ke atas
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, -4),
           ),
         ],
+        // Rounded top corners
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(
-            icon: Icons.home,
-            index: 0,
-            label: 'Home',
-            isSelected: currentIndex == 0,
-          ),
-          _buildNavItem(
-            icon: Icons.food_bank,
-            index: 1,
-            label: 'menu',
-            isSelected: currentIndex == 1,
-          ),
-          _buildNavItem(
-            icon: Icons.person,
-            index: 2,
-            label: 'Account',
-            isSelected: currentIndex == 2,
-          ),
+          _buildNavItem(icon: Icons.food_bank, index: 0),
+          _buildHomeNavItem(icon: Icons.home, index: 1),
+          _buildNavItem(icon: Icons.person, index: 2),
         ],
       ),
     );
   }
 
-  Widget _buildNavItem({
-    required IconData icon,
-    required int index,
-    required String label,
-    required bool isSelected,
-  }) {
-    return GestureDetector(
-      onTap: () => onItemSelected(index), // Panggil callback untuk navigasi
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: isSelected ? 28 : 24, // Ukuran ikon aktif lebih besar
-            color: isSelected ? Colors.white : Colors.black54, // Warna aktif
+  Widget _buildNavItem({required IconData icon, required int index}) {
+    final isSelected = currentIndex == index;
+    return Flexible(
+      child: GestureDetector(
+        onTap: () => onItemSelected(index),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            color:
+                isSelected ? Colors.white.withOpacity(0.2) : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
           ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: isSelected ? 14 : 12, // Ukuran teks aktif lebih besar
-              color: isSelected ? Colors.white : Colors.black54, // Warna teks
+          child: Icon(
+            icon,
+            size: isSelected ? 30 : 25,
+            color: isSelected ? Colors.white : Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHomeNavItem({required IconData icon, required int index}) {
+    final isSelected = currentIndex == index;
+    return Flexible(
+      child: GestureDetector(
+        onTap: () => onItemSelected(index),
+        child: Container(
+          height: 70,
+          width: 70,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isSelected
+                ? Colors.white
+                : Colors.black, // Change color based on selection
+            boxShadow: isSelected
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ]
+                : null,
+          ),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            child: Icon(
+              icon,
+              size: isSelected ? 28 : 24,
+              color: isSelected
+                  ? Colors.red
+                  : Colors.white, // Change icon color based on selection
             ),
           ),
-        ],
+        ),
       ),
     );
   }
