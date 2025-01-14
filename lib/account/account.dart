@@ -71,39 +71,47 @@ class HomePage extends StatelessWidget {
                 color: Colors.grey[900],
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hari ini,\nMau makan apa?',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Text('Cari Makanan'),
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    'assets/food1.JPG', // Ganti dengan yg ada gambar yang sesuai
-                    height: 60,
-                  ),
-                ],
+             child:  Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Expanded(
+      child: Container(
+        padding: EdgeInsets.all(16), // Memberikan padding di sekitar konten
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/food1.JPG'), // Ganti dengan path gambar yang sesuai
+            fit: BoxFit.cover, // Agar gambar memenuhi area latar belakang
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hari ini,\nMau makan apa?',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onPressed: () {},
+              child: Text('Cari Makanan'),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+)
+
             ),
             SizedBox(height: 16),
             // Pesanan Anda
@@ -122,17 +130,6 @@ class HomePage extends StatelessWidget {
             NearbyPlaces(),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Order'),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: 'Promo'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
       ),
     );
   }
@@ -261,6 +258,6 @@ class NearbyPlaceCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ); 
   }
 }
