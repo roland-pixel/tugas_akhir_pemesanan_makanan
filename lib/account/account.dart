@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
         padding: EdgeInsets.all(16), // Memberikan padding di sekitar konten
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/food1.JPG'), // Ganti dengan path gambar yang sesuai
+            image: AssetImage('assets/images/food1.JPeG'), // Ganti dengan path gambar yang sesuai
             fit: BoxFit.cover, // Agar gambar memenuhi area latar belakang
           ),
         ),
@@ -212,9 +212,21 @@ class NearbyPlaces extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          NearbyPlaceCard(name: 'Patty Paradise', distance: '1.1 km dari sini'),
-          NearbyPlaceCard(name: 'Pusako Minang', distance: '0.9 km dari sini'),
-          NearbyPlaceCard(name: 'Warteg Bahari', distance: '1.4 km dari sini'),
+          NearbyPlaceCard(
+            name: 'Patty Paradise',
+            distance: '1.1 km dari sini',
+            imagePath: 'assets/images/food2.jpeg',
+          ),
+          NearbyPlaceCard(
+            name: 'Pusako Minang',
+            distance: '0.9 km dari sini',
+            imagePath: 'assets/images/food3.jpg',
+          ),
+          NearbyPlaceCard(
+            name: 'Warteg Bahari',
+            distance: '1.4 km dari sini',
+            imagePath: 'assets/images/food5.jpeg',
+          ),
         ],
       ),
     );
@@ -224,8 +236,13 @@ class NearbyPlaces extends StatelessWidget {
 class NearbyPlaceCard extends StatelessWidget {
   final String name;
   final String distance;
+  final String imagePath; // Tambahkan parameter untuk path gambar lokal
 
-  const NearbyPlaceCard({required this.name, required this.distance});
+  const NearbyPlaceCard({
+    required this.name,
+    required this.distance,
+    required this.imagePath, // Pastikan parameter ini wajib diisi
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -239,11 +256,15 @@ class NearbyPlaceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Gunakan Image.asset untuk menampilkan gambar lokal
           Container(
             height: 100,
             decoration: BoxDecoration(
-              color: Colors.grey[700],
               borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
@@ -251,13 +272,27 @@ class NearbyPlaceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold)),
-                Text(distance, style: TextStyle(color: Colors.grey, fontSize: 12)),
+                Text(
+                  name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  distance,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
           ),
         ],
       ),
-    ); 
+    );
   }
 }
+
