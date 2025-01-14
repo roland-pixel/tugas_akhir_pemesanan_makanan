@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 8),
             OrderCard(
               title: 'Steak Nusantara',
-              address: 'Jalan Pandjaitan no 299',
+              address: 'Jalan vetran city no 299',
               time: '12 menit lagi',
               onTap: () {},
             ),
