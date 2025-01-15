@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 241, 2, 2),
         elevation: 0,
         title: Row(
           children: [
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Container(
-        color: Colors.black,
+        color: const Color.fromARGB(255, 248, 3, 3),
         child: ListView(
           padding: EdgeInsets.all(16),
           children: [
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Colors.grey[800],
+                fillColor: const Color.fromARGB(255, 247, 245, 245),
                 hintText: 'Search',
                 hintStyle: TextStyle(color: Colors.grey),
                 prefixIcon: Icon(Icons.search, color: Colors.grey),
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey[900],
+                color: const Color.fromARGB(255, 245, 243, 243),
                 borderRadius: BorderRadius.circular(8),
               ),
              child:  Row(
@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
             Text(
               'Hari ini,\nMau makan apa?',
               style: TextStyle(
-                color: Colors.white,
+                color: const Color.fromARGB(255, 250, 249, 249),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 8),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
+                backgroundColor: const Color.fromARGB(255, 253, 253, 251),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -153,7 +153,7 @@ class SectionTitle extends StatelessWidget {
         ),
         TextButton(
           onPressed: onViewAll,
-          child: Text('Selengkapnya', style: TextStyle(color: Colors.orange)),
+          child: Text('Selengkapnya', style: TextStyle(color: const Color.fromARGB(255, 244, 244, 244))),
         ),
       ],
     );
@@ -176,24 +176,24 @@ class OrderCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color: const Color.fromARGB(255, 249, 249, 249),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           children: [
             CircleAvatar(
-              backgroundColor: Colors.grey[700],
+              backgroundColor: const Color.fromARGB(255, 252, 251, 251),
               radius: 24,
-              child: Icon(Icons.restaurant, color: Colors.white),
+              child: Icon(Icons.restaurant, color: const Color.fromARGB(255, 245, 2, 2)),
             ),
             SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text(address, style: TextStyle(color: Colors.grey, fontSize: 14)),
-                  Text(time, style: TextStyle(color: Colors.grey, fontSize: 14)),
+                  Text(title, style: TextStyle(color: const Color.fromARGB(255, 45, 37, 37), fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(address, style: TextStyle(color: const Color.fromARGB(255, 55, 46, 46), fontSize: 14)),
+                  Text(time, style: TextStyle(color: const Color.fromARGB(255, 67, 55, 55), fontSize: 14)),
                 ],
               ),
             ),
@@ -250,7 +250,7 @@ class NearbyPlaceCard extends StatelessWidget {
       width: 150,
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-        color: Colors.grey[900],
+        color: const Color.fromARGB(255, 248, 246, 246),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -275,7 +275,7 @@ class NearbyPlaceCard extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 30, 25, 25),
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -283,7 +283,7 @@ class NearbyPlaceCard extends StatelessWidget {
                 Text(
                   distance,
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: const Color.fromARGB(255, 248, 247, 247),
                     fontSize: 12,
                   ),
                 ),
