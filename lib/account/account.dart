@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.jpg'), // Ganti dengan gambar profil
+              backgroundImage: AssetImage(
+                  'assets/profile.jpg'), // Ganti dengan gambar profil
             ),
             SizedBox(width: 8),
             Text(
@@ -66,6 +67,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 16),
             // Bagian "Hari ini, Mau makan apa?"
             Container(
+<<<<<<< HEAD
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 245, 243, 243),
@@ -99,20 +101,56 @@ class HomePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 253, 253, 251),
                 shape: RoundedRectangleBorder(
+=======
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.grey[900],
+>>>>>>> 0eca41aefcb6aed357d4345768c28c2f01cbf1ee
                   borderRadius: BorderRadius.circular(8),
                 ),
-              ),
-              onPressed: () {},
-              child: Text('Cari Makanan'),
-            ),
-          ],
-        ),
-      ),
-    ),
-  ],
-)
-
-            ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.all(
+                            16), // Memberikan padding di sekitar konten
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                'assets/images/food1.JPeG'), // Ganti dengan path gambar yang sesuai
+                            fit: BoxFit
+                                .cover, // Agar gambar memenuhi area latar belakang
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hari ini,\nMau makan apa?',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: Text('Cari Makanan'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
             SizedBox(height: 16),
             // Pesanan Anda
             SectionTitle(title: 'Pesanan anda', onViewAll: () {}),
@@ -149,7 +187,8 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
         ),
         TextButton(
           onPressed: onViewAll,
@@ -167,7 +206,11 @@ class OrderCard extends StatelessWidget {
   final String time;
   final VoidCallback onTap;
 
-  const OrderCard({required this.title, required this.address, required this.time, required this.onTap});
+  const OrderCard(
+      {required this.title,
+      required this.address,
+      required this.time,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -191,9 +234,21 @@ class OrderCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+<<<<<<< HEAD
                   Text(title, style: TextStyle(color: const Color.fromARGB(255, 45, 37, 37), fontSize: 16, fontWeight: FontWeight.bold)),
                   Text(address, style: TextStyle(color: const Color.fromARGB(255, 55, 46, 46), fontSize: 14)),
                   Text(time, style: TextStyle(color: const Color.fromARGB(255, 67, 55, 55), fontSize: 14)),
+=======
+                  Text(title,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold)),
+                  Text(address,
+                      style: TextStyle(color: Colors.grey, fontSize: 14)),
+                  Text(time,
+                      style: TextStyle(color: Colors.grey, fontSize: 14)),
+>>>>>>> 0eca41aefcb6aed357d4345768c28c2f01cbf1ee
                 ],
               ),
             ),
@@ -295,4 +350,3 @@ class NearbyPlaceCard extends StatelessWidget {
     );
   }
 }
-
