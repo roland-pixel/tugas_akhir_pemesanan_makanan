@@ -22,8 +22,9 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   String _selectedPaymentMethod = '';
   List<Map<String, dynamic>> orderItems = [
-    {'name': 'Nasi Goreng', 'price': 25000},
-    {'name': 'Mie Ayam', 'price': 20000},
+    {'name': 'Tumpeng Spesial Merah Putih', 'price': 150000, 'image': 'assets/images/menu/tumpeng.jpg'},
+    {'name': 'Puding Buah', 'price': 30000, 'image': 'assets/images/menu/puding.jpg'},
+    {'name': 'Lemon Tea', 'price': 20000, 'image': 'assets/images/menu/lemontea.jpg'},
   ];
   int deliveryFee = 12000;
   int serviceFee = 5000;
@@ -42,8 +43,8 @@ class _PaymentPageState extends State<PaymentPage> {
     return subtotal +
         deliveryFee +
         serviceFee +
-        additionalFee -
-        shippingDiscount -
+        additionalFee - 
+        shippingDiscount - 
         foodDiscount;
   }
 
@@ -51,7 +52,8 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pembayaran'),
+        title: Text('Pembayaran', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFFD32F2F), // Red color for consistency
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -70,7 +72,7 @@ class _PaymentPageState extends State<PaymentPage> {
               Divider(),
               Text(
                 'Total Pembayaran: Rp $totalPrice',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFFD32F2F)),
               ),
               SizedBox(height: 20),
               Text(
@@ -83,13 +85,16 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_selectedPaymentMethod.isEmpty) {
-                      _showErrorDialog(
-                          context, 'Silakan pilih metode pembayaran.');
+                      _showErrorDialog(context, 'Silakan pilih metode pembayaran.');
                     } else {
                       _showSuccessDialog(context);
                     }
                   },
                   child: Text('Bayar'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFD32F2F), // Red button for consistency
+                    minimumSize: Size(MediaQuery.of(context).size.width - 32, 50),
+                  ),
                 ),
               ),
             ],
@@ -106,6 +111,12 @@ class _PaymentPageState extends State<PaymentPage> {
       itemCount: orderItems.length,
       itemBuilder: (context, index) {
         return ListTile(
+          leading: Image.asset(
+            orderItems[index]['image'],
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
           title: Text(orderItems[index]['name']),
           trailing: Text('Rp ${orderItems[index]['price']}'),
         );
@@ -117,17 +128,12 @@ class _PaymentPageState extends State<PaymentPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Subtotal untuk ${orderItems.length} item: Rp $subtotal',
-            style: TextStyle(fontSize: 16)),
-        Text('Biaya Pengiriman: Rp $deliveryFee',
-            style: TextStyle(fontSize: 16)),
+        Text('Subtotal untuk ${orderItems.length} item: Rp $subtotal', style: TextStyle(fontSize: 16)),
+        Text('Biaya Pengiriman: Rp $deliveryFee', style: TextStyle(fontSize: 16)),
         Text('Biaya Layanan: Rp $serviceFee', style: TextStyle(fontSize: 16)),
-        Text('Biaya Tambahan Restoran: Rp $additionalFee',
-            style: TextStyle(fontSize: 16)),
-        Text('Diskon Pengiriman: -Rp $shippingDiscount',
-            style: TextStyle(fontSize: 16)),
-        Text('Diskon Makanan: -Rp $foodDiscount',
-            style: TextStyle(fontSize: 16)),
+        Text('Biaya Tambahan Restoran: Rp $additionalFee', style: TextStyle(fontSize: 16)),
+        Text('Diskon Pengiriman: -Rp $shippingDiscount', style: TextStyle(fontSize: 16)),
+        Text('Diskon Makanan: -Rp $foodDiscount', style: TextStyle(fontSize: 16)),
       ],
     );
   }
