@@ -22,9 +22,17 @@ class PaymentPage extends StatefulWidget {
 class _PaymentPageState extends State<PaymentPage> {
   String _selectedPaymentMethod = '';
   List<Map<String, dynamic>> orderItems = [
-    {'name': 'Tumpeng Spesial Merah Putih', 'price': 150000, 'image': 'assets/images/menu/tumpeng.jpg'},
-    {'name': 'Puding Buah', 'price': 30000, 'image': 'assets/images/menu/puding.jpg'},
-    {'name': 'Lemon Tea', 'price': 20000, 'image': 'assets/images/menu/lemontea.jpg'},
+    {
+      'name': 'Tumpeng Spesial Merah Putih',
+      'price': 150000,
+      'image': 'assets/images/menu/tumpeng.jpg'
+    },
+    {'name': 'Bakso', 'price': 30000, 'image': 'assets/images/menu/bakso.jpg'},
+    {
+      'name': 'gado gado',
+      'price': 20000,
+      'image': 'assets/images/menu/gado_gado.jpeg'
+    },
   ];
   int deliveryFee = 12000;
   int serviceFee = 5000;
@@ -43,8 +51,8 @@ class _PaymentPageState extends State<PaymentPage> {
     return subtotal +
         deliveryFee +
         serviceFee +
-        additionalFee - 
-        shippingDiscount - 
+        additionalFee -
+        shippingDiscount -
         foodDiscount;
   }
 
@@ -72,7 +80,10 @@ class _PaymentPageState extends State<PaymentPage> {
               Divider(),
               Text(
                 'Total Pembayaran: Rp $totalPrice',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFFD32F2F)),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFD32F2F)),
               ),
               SizedBox(height: 20),
               Text(
@@ -85,15 +96,18 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_selectedPaymentMethod.isEmpty) {
-                      _showErrorDialog(context, 'Silakan pilih metode pembayaran.');
+                      _showErrorDialog(
+                          context, 'Silakan pilih metode pembayaran.');
                     } else {
                       _showSuccessDialog(context);
                     }
                   },
                   child: Text('Bayar'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFD32F2F), // Red button for consistency
-                    minimumSize: Size(MediaQuery.of(context).size.width - 32, 50),
+                    backgroundColor:
+                        Color(0xFFD32F2F), // Red button for consistency
+                    minimumSize:
+                        Size(MediaQuery.of(context).size.width - 32, 50),
                   ),
                 ),
               ),
@@ -128,12 +142,17 @@ class _PaymentPageState extends State<PaymentPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Subtotal untuk ${orderItems.length} item: Rp $subtotal', style: TextStyle(fontSize: 16)),
-        Text('Biaya Pengiriman: Rp $deliveryFee', style: TextStyle(fontSize: 16)),
+        Text('Subtotal untuk ${orderItems.length} item: Rp $subtotal',
+            style: TextStyle(fontSize: 16)),
+        Text('Biaya Pengiriman: Rp $deliveryFee',
+            style: TextStyle(fontSize: 16)),
         Text('Biaya Layanan: Rp $serviceFee', style: TextStyle(fontSize: 16)),
-        Text('Biaya Tambahan Restoran: Rp $additionalFee', style: TextStyle(fontSize: 16)),
-        Text('Diskon Pengiriman: -Rp $shippingDiscount', style: TextStyle(fontSize: 16)),
-        Text('Diskon Makanan: -Rp $foodDiscount', style: TextStyle(fontSize: 16)),
+        Text('Biaya Tambahan Restoran: Rp $additionalFee',
+            style: TextStyle(fontSize: 16)),
+        Text('Diskon Pengiriman: -Rp $shippingDiscount',
+            style: TextStyle(fontSize: 16)),
+        Text('Diskon Makanan: -Rp $foodDiscount',
+            style: TextStyle(fontSize: 16)),
       ],
     );
   }
