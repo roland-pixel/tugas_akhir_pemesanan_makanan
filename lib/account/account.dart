@@ -71,39 +71,47 @@ class HomePage extends StatelessWidget {
                 color: Colors.grey[900],
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hari ini,\nMau makan apa?',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Text('Cari Makanan'),
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    'assets/food1.JPG', // Ganti dengan yg ada gambar yang sesuai
-                    height: 60,
-                  ),
-                ],
+             child:  Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Expanded(
+      child: Container(
+        padding: EdgeInsets.all(16), // Memberikan padding di sekitar konten
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/food1.JPeG'), // Ganti dengan path gambar yang sesuai
+            fit: BoxFit.cover, // Agar gambar memenuhi area latar belakang
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hari ini,\nMau makan apa?',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onPressed: () {},
+              child: Text('Cari Makanan'),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+)
+
             ),
             SizedBox(height: 16),
             // Pesanan Anda
@@ -111,7 +119,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 8),
             OrderCard(
               title: 'Steak Nusantara',
-              address: 'Jalan Pandjaitan no 299',
+              address: 'Jalan vetran city no 299',
               time: '12 menit lagi',
               onTap: () {},
             ),
@@ -122,17 +130,6 @@ class HomePage extends StatelessWidget {
             NearbyPlaces(),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Order'),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: 'Promo'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
       ),
     );
   }
@@ -215,9 +212,21 @@ class NearbyPlaces extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          NearbyPlaceCard(name: 'Patty Paradise', distance: '1.1 km dari sini'),
-          NearbyPlaceCard(name: 'Pusako Minang', distance: '0.9 km dari sini'),
-          NearbyPlaceCard(name: 'Warteg Bahari', distance: '1.4 km dari sini'),
+          NearbyPlaceCard(
+            name: 'Patty Paradise',
+            distance: '1.1 km dari sini',
+            imagePath: 'assets/images/food2.jpeg',
+          ),
+          NearbyPlaceCard(
+            name: 'Pusako Minang',
+            distance: '0.9 km dari sini',
+            imagePath: 'assets/images/food3.jpg',
+          ),
+          NearbyPlaceCard(
+            name: 'Warteg Bahari',
+            distance: '1.4 km dari sini',
+            imagePath: 'assets/images/food5.jpeg',
+          ),
         ],
       ),
     );
@@ -227,8 +236,13 @@ class NearbyPlaces extends StatelessWidget {
 class NearbyPlaceCard extends StatelessWidget {
   final String name;
   final String distance;
+  final String imagePath; // Tambahkan parameter untuk path gambar lokal
 
-  const NearbyPlaceCard({required this.name, required this.distance});
+  const NearbyPlaceCard({
+    required this.name,
+    required this.distance,
+    required this.imagePath, // Pastikan parameter ini wajib diisi
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -242,11 +256,15 @@ class NearbyPlaceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Gunakan Image.asset untuk menampilkan gambar lokal
           Container(
             height: 100,
             decoration: BoxDecoration(
-              color: Colors.grey[700],
               borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
@@ -254,8 +272,21 @@ class NearbyPlaceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold)),
-                Text(distance, style: TextStyle(color: Colors.grey, fontSize: 12)),
+                Text(
+                  name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  distance,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
           ),
@@ -264,3 +295,4 @@ class NearbyPlaceCard extends StatelessWidget {
     );
   }
 }
+

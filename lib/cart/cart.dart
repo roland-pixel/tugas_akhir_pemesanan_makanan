@@ -19,8 +19,7 @@ class MyApp extends StatelessWidget {
 
 class ShoppingCartPage extends StatelessWidget {
   final List<CartItem> cartItems = [
-    CartItem(name: 'ES Teh...', points: 10, image: 'assets/images/menu/esteh.jpeg'),
-    CartItem(name: 'Martabak Manis', points: 50, image: 'assets/images/menu/martabakmanis.jpg'),
+    CartItem(name: 'Promo Hari Merdeka', price: 150000, image: 'assets/images/menu/tumpeng.jpg'),
   ];
 
   @override
@@ -31,7 +30,7 @@ class ShoppingCartPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Tambahkan logika untuk tombol kembali jika diperlukan
+            Navigator.pop(context);
           },
         ),
         title: Row(
@@ -85,21 +84,45 @@ class ShoppingCartPage extends StatelessWidget {
             ),
           ),
           Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          Container(
+            color: Colors.red,
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Total: ${calculateTotal(cartItems)} poin',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    Checkbox(value: false, onChanged: (value) {}),
+                    const Text(
+                      'Pilih Semua (1)',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    const SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        'Hapus',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink,
-                  ),
-                  child: Text('Checkout', style: TextStyle(color: Colors.white)),
+                Row(
+                  children: [
+                    Text(
+                      'Total (0 produk): Rp${formatCurrency(calculateTotal(cartItems))}',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                      child: const Text(
+                        'Checkout',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -109,17 +132,22 @@ class ShoppingCartPage extends StatelessWidget {
     );
   }
 
-  int calculateTotal(List<CartItem> items) {
-    return items.fold(0, (sum, item) => sum + item.points);
+  double calculateTotal(List<CartItem> items) {
+    return items.fold(0, (sum, item) => sum + item.price);
+  }
+
+  String formatCurrency(double amount) {
+    return amount.toStringAsFixed(0).replaceAllMapped(
+        RegExp(r'\B(?=(\d{3})+(?!\d))'), (Match m) => '.');
   }
 }
 
 class CartItem {
   final String name;
-  final int points;
+  final double price;
   final String image;
 
-  CartItem({required this.name, required this.points, required this.image});
+  CartItem({required this.name, required this.price, required this.image});
 }
 
 class CartItemWidget extends StatelessWidget {
@@ -137,8 +165,13 @@ class CartItemWidget extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: Text(item.name),
-      subtitle: Text('${item.points} poin'),
+      subtitle: Text('Rp${formatCurrency(item.price)}'),
       trailing: Checkbox(value: true, onChanged: (value) {}),
     );
+  }
+
+  String formatCurrency(double amount) {
+    return amount.toStringAsFixed(0).replaceAllMapped(
+        RegExp(r'\B(?=(\d{3})+(?!\d))'), (Match m) => '.');
   }
 }
