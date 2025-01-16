@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'chat.dart';
 import 'daftar_menu.dart';
 import 'ulasan.dart';
+import '../cart/cart.dart';
 
 void main() {
   runApp(DetailMenu());
@@ -66,10 +67,7 @@ class _AppBarKustomState extends State<AppBarKustom> {
       leading: IconButton(
         icon: Icon(Icons.arrow_back, color: Colors.black),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DaftarMenuPage()),
-          );
+          Navigator.pop(context);
         },
       ),
       title: SizedBox(
@@ -115,7 +113,12 @@ class _AppBarKustomState extends State<AppBarKustom> {
           children: [
             IconButton(
               icon: Icon(Icons.shopping_cart, color: Colors.black),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+                );
+              },
             ),
             Positioned(
               right: 0,
@@ -466,7 +469,12 @@ class customnavigationbar extends StatelessWidget {
               width: 120,
               child: IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ShoppingCartPage()),
+                  );
+                },
               ),
             ),
             Expanded(
@@ -554,7 +562,7 @@ class ShareWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'Bagikan ke Teman KID dan kontak lainnya',
+                    'Bagikan ke Teman KIDN dan kontak lainnya',
                     style: TextStyle(fontSize: 14),
                   ),
                 ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_akhir_pemesanan_makanan/cart/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,21 +16,42 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ShoppingCartPage extends StatelessWidget {
-  final List<CartItem> cartItems = [
-    CartItem(name: 'ES Teh...', points: 10, image: 'assets/images/menu/esteh.jpeg'),
-    CartItem(name: 'Martabak Manis', points: 50, image: 'assets/images/menu/martabakmanis.jpg'),
+class ShoppingCartPage extends StatefulWidget {
+  @override
+  _ShoppingCartPageState createState() => _ShoppingCartPageState();
+}
+
+class _ShoppingCartPageState extends State<ShoppingCartPage> {
+  List<CartItem> cartItems = [
+    CartItem(name: 'Promo Hari Merdeka', price: 150000, image: 'assets/images/menu/tumpeng.jpg', isSelected: false),
   ];
+
+  bool isAllSelected = false;
+
+  void toggleSelectAll(bool? value) {
+    setState(() {
+      isAllSelected = value ?? false;
+      for (var item in cartItems) {
+        item.isSelected = isAllSelected;
+      }
+    });
+  }
+
+  double calculateTotal() {
+    return cartItems
+        .where((item) => item.isSelected)
+        .fold(0, (sum, item) => sum + item.price);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red, // Warna latar belakang
+        backgroundColor: Colors.red,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Tambahkan logika untuk tombol kembali jika diperlukan
+            Navigator.pop(context);
           },
         ),
         title: Row(
@@ -80,26 +100,71 @@ class ShoppingCartPage extends StatelessWidget {
             child: ListView.builder(
               itemCount: cartItems.length,
               itemBuilder: (context, index) {
-                return CartItemWidget(item: cartItems[index]);
+                return CartItemWidget(
+                  item: cartItems[index],
+                  onChanged: (value) {
+                    setState(() {
+                      cartItems[index].isSelected = value ?? false;
+                      isAllSelected =
+                          cartItems.every((item) => item.isSelected);
+                    });
+                  },
+                );
               },
             ),
           ),
           Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          Container(
+            color: Colors.red,
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Row(
+              children: [
+                Checkbox(
+                  value: isAllSelected,
+                  onChanged: toggleSelectAll,
+                ),
+                const Text(
+                  'Pilih Semua',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  '|',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+                const SizedBox(width: 8), // Jarak kecil sebelum teks "Hapus"
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      cartItems.removeWhere((item) => item.isSelected);
+                      isAllSelected = false;
+                    });
+                  },
+                  child: const Text(
+                    'Hapus',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.red,
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Total: ${calculateTotal(cartItems)} poin',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  'Total Harga: Rp${formatCurrency(calculateTotal())}',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink,
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                  child: const Text(
+                    'Checkout',
+                    style: TextStyle(color: Colors.red),
                   ),
-                  child: Text('Checkout', style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -109,23 +174,31 @@ class ShoppingCartPage extends StatelessWidget {
     );
   }
 
-  int calculateTotal(List<CartItem> items) {
-    return items.fold(0, (sum, item) => sum + item.points);
+  String formatCurrency(double amount) {
+    return amount.toStringAsFixed(0).replaceAllMapped(
+        RegExp(r'\B(?=(\d{3})+(?!\d))'), (Match m) => '.');
   }
 }
 
 class CartItem {
   final String name;
-  final int points;
+  final double price;
   final String image;
+  bool isSelected;
 
-  CartItem({required this.name, required this.points, required this.image});
+  CartItem({
+    required this.name,
+    required this.price,
+    required this.image,
+    this.isSelected = false,
+  });
 }
 
 class CartItemWidget extends StatelessWidget {
   final CartItem item;
+  final ValueChanged<bool?> onChanged;
 
-  CartItemWidget({required this.item});
+  CartItemWidget({required this.item, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +210,16 @@ class CartItemWidget extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: Text(item.name),
-      subtitle: Text('${item.points} poin'),
-      trailing: Checkbox(value: true, onChanged: (value) {}),
+      subtitle: Text('Rp${formatCurrency(item.price)}'),
+      trailing: Checkbox(
+        value: item.isSelected,
+        onChanged: onChanged,
+      ),
     );
+  }
+
+  String formatCurrency(double amount) {
+    return amount.toStringAsFixed(0).replaceAllMapped(
+        RegExp(r'\B(?=(\d{3})+(?!\d))'), (Match m) => '.');
   }
 }
