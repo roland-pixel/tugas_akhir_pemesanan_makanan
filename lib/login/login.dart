@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir_pemesanan_makanan/submain.dart';
 
 void main() {
   runApp(const LoginApp());
@@ -76,7 +77,12 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                // Action untuk tombol Login
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFD32F2F), // Merah Indonesia

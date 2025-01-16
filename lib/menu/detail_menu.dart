@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir_pemesanan_makanan/pembayaran/pembayaran.dart';
 import 'chat.dart';
 import 'daftar_menu.dart';
 import 'ulasan.dart';
@@ -765,7 +766,14 @@ class _ProductWidgetState extends State<ProductWidget> {
               Divider(),
               SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentPage(),
+                    ),
+                  );
+                },
                 child: Text('Beli Sekarang'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFFD32F2F),

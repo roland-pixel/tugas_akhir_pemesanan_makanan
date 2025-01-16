@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:tugas_akhir_pemesanan_makanan/login/login.dart';
 import 'package:tugas_akhir_pemesanan_makanan/submain.dart';
 
 void main() {
@@ -179,7 +180,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
     await Future.delayed(Duration(seconds: 3)); // Durasi animasi loading
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 
