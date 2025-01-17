@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_akhir_pemesanan_makanan/submain.dart';
 
 void main() {
   runApp(const LoginApp());
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1E1E2C), // Background color
+      backgroundColor: const Color(0xFFFFF5F5), // Warna latar putih lembut
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -34,52 +35,57 @@ class LoginScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color(0xFFD32F2F), // Merah Indonesia
               ),
             ),
             const SizedBox(height: 40),
             const TextField(
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color(0xFFD32F2F)),
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person, color: Colors.white),
+                prefixIcon: Icon(Icons.person, color: Color(0xFFD32F2F)),
                 hintText: "Username",
-                hintStyle: TextStyle(color: Colors.white54),
+                hintStyle: TextStyle(color: Colors.grey),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white54),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber),
+                  borderSide: BorderSide(color: Color(0xFFD32F2F)),
                 ),
               ),
             ),
             const SizedBox(height: 20),
             const TextField(
               obscureText: true,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color(0xFFD32F2F)),
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock, color: Colors.white),
+                prefixIcon: Icon(Icons.lock, color: Color(0xFFD32F2F)),
                 hintText: "Password",
-                hintStyle: TextStyle(color: Colors.white54),
+                hintStyle: TextStyle(color: Colors.grey),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white54),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber),
+                  borderSide: BorderSide(color: Color(0xFFD32F2F)),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             const Text(
               "Incorrect password.",
-              style: TextStyle(color: Colors.red, fontSize: 14),
+              style: TextStyle(color: Color(0xFFD32F2F), fontSize: 14),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                // Action untuk tombol Login
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
+                backgroundColor: Color(0xFFD32F2F), // Merah Indonesia
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -100,7 +106,7 @@ class LoginScreen extends StatelessWidget {
                 },
                 child: const Text(
                   "First time here? Sign up.",
-                  style: TextStyle(color: Colors.white70),
+                  style: TextStyle(color: Color(0xFFD32F2F)),
                 ),
               ),
             ),
