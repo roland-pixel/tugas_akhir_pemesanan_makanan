@@ -39,7 +39,7 @@ class BerandaScreen extends StatelessWidget {
             // Bagian Header
             Container(
               padding: EdgeInsets.all(16.0),
-              color: const Color.fromARGB(255, 231, 77, 77),
+              color: const Color.fromARGB(255, 214, 75, 65 ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -75,7 +75,7 @@ class BerandaScreen extends StatelessWidget {
             // Konten Tambahan
             Container(
               padding: EdgeInsets.all(16.0),
-              color: Colors.blue[50],
+              color: Colors.red[50],
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -178,6 +178,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+       backgroundColor: const Color.fromARGB(255, 214, 75, 65),
       title: Row(
         children: [
           Text('9 11 Meals', style: TextStyle( fontWeight: FontWeight.bold),),
