@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tampilan Beranda',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
@@ -39,18 +39,18 @@ class BerandaScreen extends StatelessWidget {
             // Bagian Header
             Container(
               padding: EdgeInsets.all(16.0),
-              color: Colors.blue[50],
+              color: const Color.fromARGB(255, 231, 77, 77),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Selamat Datang!',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   SizedBox(height: 8),
                   Text(
                     'Temukan berbagai informasi dan fitur aplikasi di sini.',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               ),
@@ -196,7 +196,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: const Color.fromARGB(255, 255, 0, 0),
                 ),
                 style: TextStyle(color: Colors.black),
                 autofocus: true,
