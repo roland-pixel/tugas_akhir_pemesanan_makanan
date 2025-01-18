@@ -39,7 +39,7 @@ class BerandaScreen extends StatelessWidget {
             // Bagian Header
             Container(
               padding: EdgeInsets.all(16.0),
-              color: Colors.blue[50],
+              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -65,9 +65,16 @@ class BerandaScreen extends StatelessWidget {
               crossAxisSpacing: 5,
               mainAxisSpacing: 5,
               children: [
-                MenuItem(title: 'Daftar Menu', icon: Icons.food_bank, route: '/daftarMenu'),
-                MenuItem(title: 'Keranjang', icon: Icons.shopping_cart, route: '/keranjang'),
-                MenuItem(title: 'Riwayat', icon: Icons.history, route: '/riwayat'),
+                MenuItem(
+                    title: 'Daftar Menu',
+                    icon: Icons.food_bank,
+                    route: '/daftarMenu'),
+                MenuItem(
+                    title: 'Keranjang',
+                    icon: Icons.shopping_cart,
+                    route: '/keranjang'),
+                MenuItem(
+                    title: 'Riwayat', icon: Icons.history, route: '/riwayat'),
               ],
             ),
             SizedBox(height: 20),
@@ -75,7 +82,7 @@ class BerandaScreen extends StatelessWidget {
             // Konten Tambahan
             Container(
               padding: EdgeInsets.all(16.0),
-              color: Colors.blue[50],
+              color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -90,13 +97,15 @@ class BerandaScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   promocardmenu(
-                    expirytext: 'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
+                    expirytext:
+                        'Nikmati Lezatnya Cita Rasa Nusantara dengan Semangat Merdeka!',
                     imgurl: 'assets/images/menu/tumpeng.jpg',
                     promoname: 'Promo Hari Kemerdekaan',
                     validitydate: 'Berlaku hingga 31 desember',
                   ),
                   promocardmenu(
-                    expirytext: 'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
+                    expirytext:
+                        'Hangatkan Harimu dengan Hidangan Khas Indonesia!',
                     imgurl: 'assets/images/sushi1.png',
                     promoname: 'Promo Musim Hujan',
                     validitydate: 'Berlaku hingga 31 desember',
@@ -145,14 +154,14 @@ class MenuItem extends StatelessWidget {
               Icon(
                 icon,
                 size: 30,
-                color: Colors.blue,
+                color: Color(0xFFD32F2F),
               ),
               SizedBox(height: 10),
               Text(
                 title,
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.blue,
+                  color: Color(0xFFD32F2F),
                 ),
               ),
             ],
@@ -178,10 +187,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Color(0xFFD32F2F),
       title: Row(
         children: [
-          Text('9 11 Meals', style: TextStyle( fontWeight: FontWeight.bold),),
-
+          Text(
+            '9 11 Meals',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           Spacer(),
           if (_isSearching)
             Container(

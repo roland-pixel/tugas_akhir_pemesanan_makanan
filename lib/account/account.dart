@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: Container(
-        color: const Color.fromARGB(255, 248, 3, 3),
+        color: Colors.white,
         child: ListView(
           padding: EdgeInsets.all(16),
           children: [
@@ -185,7 +185,7 @@ class OrderCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 249, 249, 249),
+          color: Colors.black,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
