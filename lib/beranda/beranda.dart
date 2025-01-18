@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tampilan Beranda',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
@@ -39,18 +39,22 @@ class BerandaScreen extends StatelessWidget {
             // Bagian Header
             Container(
               padding: EdgeInsets.all(16.0),
+<<<<<<< HEAD
               color: Colors.white,
+=======
+              color: const Color.fromARGB(255, 214, 75, 65 ),
+>>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Selamat Datang!',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   SizedBox(height: 8),
                   Text(
                     'Temukan berbagai informasi dan fitur aplikasi di sini.',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               ),
@@ -82,7 +86,11 @@ class BerandaScreen extends StatelessWidget {
             // Konten Tambahan
             Container(
               padding: EdgeInsets.all(16.0),
+<<<<<<< HEAD
               color: Colors.white,
+=======
+              color: Colors.red[50],
+>>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -187,7 +195,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+<<<<<<< HEAD
       backgroundColor: Color(0xFFD32F2F),
+=======
+       backgroundColor: const Color.fromARGB(255, 214, 75, 65),
+>>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
       title: Row(
         children: [
           Text(
@@ -208,7 +220,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: const Color.fromARGB(255, 255, 0, 0),
                 ),
                 style: TextStyle(color: Colors.black),
                 autofocus: true,
