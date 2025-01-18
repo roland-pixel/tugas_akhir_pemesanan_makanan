@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.red, Colors.white], // Gradien merah-putih
+            colors: [Color(0xFFD32F2F), Colors.white], // Gradien merah-putih
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -82,7 +82,7 @@ class StartupPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.red, Colors.white], // Gradien merah-putih
+            colors: [Color(0xFFD32F2F), Colors.white], // Gradien merah-putih
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -190,7 +190,7 @@ class _SplashScreen1State extends State<SplashScreen1> {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.red, Colors.white], // Gradien merah-putih
+            colors: [Color(0xFFD32F2F), Colors.white], // Gradien merah-putih
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
