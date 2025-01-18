@@ -39,17 +39,16 @@ class BerandaScreen extends StatelessWidget {
             // Bagian Header
             Container(
               padding: EdgeInsets.all(16.0),
-<<<<<<< HEAD
-              color: Colors.white,
-=======
-              color: const Color.fromARGB(255, 214, 75, 65 ),
->>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
+              color: const Color.fromARGB(255, 214, 75, 65),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Selamat Datang!',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -86,11 +85,7 @@ class BerandaScreen extends StatelessWidget {
             // Konten Tambahan
             Container(
               padding: EdgeInsets.all(16.0),
-<<<<<<< HEAD
-              color: Colors.white,
-=======
               color: Colors.red[50],
->>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -195,11 +190,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-<<<<<<< HEAD
-      backgroundColor: Color(0xFFD32F2F),
-=======
-       backgroundColor: const Color.fromARGB(255, 214, 75, 65),
->>>>>>> 45b7afcb7297677c23d9918ec24a28eefe336f7a
+      backgroundColor: const Color.fromARGB(255, 214, 75, 65),
       title: Row(
         children: [
           Text(
