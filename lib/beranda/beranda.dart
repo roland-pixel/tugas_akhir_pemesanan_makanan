@@ -157,14 +157,14 @@ class MenuItem extends StatelessWidget {
               Icon(
                 icon,
                 size: 30,
-                color: Color(0xFFD32F2F),
+                color: Colors.blue,
               ),
               SizedBox(height: 10),
               Text(
                 title,
                 style: TextStyle(
                   fontSize: 18,
-                  color: Color(0xFFD32F2F),
+                  color: Colors.blue,
                 ),
               ),
             ],
@@ -190,13 +190,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 214, 75, 65),
+       backgroundColor: const Color.fromARGB(255, 214, 75, 65),
       title: Row(
         children: [
-          Text(
-            '9 11 Meals',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          Text('🛬 11 Meals', style: TextStyle( fontWeight: FontWeight.bold),),
+
           Spacer(),
           if (_isSearching)
             Container(
@@ -211,7 +209,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
-                  fillColor: const Color.fromARGB(255, 255, 0, 0),
+                  fillColor: const Color.fromARGB(255, 255, 255, 255),
                 ),
                 style: TextStyle(color: Colors.black),
                 autofocus: true,
